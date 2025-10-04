@@ -1,6 +1,8 @@
-/* ===== HISTORIA CSS MODERNO ===== */
-
-/* Variables específicas para historia */
+/* 
+--- 
+Root esta siendo extraido del styles.css 
+---
+*/
 :root {
     --historia-gradient: linear-gradient(135deg, #004D98 0%, #003366 50%, #A50044 100%);
     --timeline-line: #004D98;
@@ -8,7 +10,11 @@
     --card-shadow: 0 8px 32px rgba(0, 77, 152, 0.15);
 }
 
-/* ===== HERO SECTION ===== */
+/*
+--- 
+Seccion del hero 
+---
+*/
 .historia-hero {
     position: relative;
     min-height: 70vh;
@@ -18,6 +24,12 @@
     justify-content: center;
     overflow: hidden;
 }
+
+/* 
+---
+Esto hace display la foto como background 
+---
+*/
 
 .historia-hero::before {
     content: '';
@@ -98,7 +110,12 @@
     color: white;
 }
 
-/* ===== TIMELINE SECTION ===== */
+/* 
+---
+Linea del Tiempo
+---
+*/
+
 .historia-timeline {
     padding: 5rem 0;
     background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
@@ -191,7 +208,6 @@
     background: white;
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: var(--card-shadow);
     border: 1px solid rgba(0, 77, 152, 0.1);
     position: relative;
     overflow: hidden;
@@ -206,7 +222,6 @@
     height: 4px;
     background: linear-gradient(90deg, #004D98, #A50044);
 }
-
 
 .timeline-card h3 {
     color: #004D98;
@@ -233,8 +248,12 @@
     object-fit: cover;
 }
 
+/* 
+---
+Seccion de Trofeos 
+---
+*/
 
-/* ===== TROFEOS SECTION ===== */
 .historia-trofeos {
     padding: 5rem 0;
     background: linear-gradient(135deg, #004D98 0%, #003366 100%);
@@ -251,7 +270,7 @@
 
 .trophies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 33.333%));
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -276,7 +295,6 @@
     height: 4px;
     background: linear-gradient(90deg, #004D98, #A50044);
 }
-
 
 .trophy-icon {
     width: 100px;
@@ -321,7 +339,12 @@
     font-weight: 500;
 }
 
-/* ===== GALERÍA SECTION ===== */
+/*
+---
+Seccion de galeria
+---
+*/
+
 .historia-galeria {
     padding: 5rem 0;
     background: #F8F9FA;
@@ -329,7 +352,7 @@
 
 .galeria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 33.333%));
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -343,13 +366,11 @@
     aspect-ratio: 4/3;
 }
 
-
 .galeria-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 
 .galeria-overlay {
     position: absolute;
@@ -360,7 +381,6 @@
     color: white;
     padding: 2rem 1.5rem 1.5rem;
 }
-
 
 .galeria-overlay h4 {
     font-size: 1.2rem;
@@ -374,7 +394,12 @@
     font-weight: 500;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* 
+---
+Diseno 
+---
+*/
+
 @media (max-width: 1024px) {
     .timeline-container::before {
         left: 60px;
@@ -438,12 +463,12 @@
     }
     
     .trophies-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         gap: 1.5rem;
     }
     
     .galeria-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 50%));
         gap: 1.5rem;
     }
     
@@ -474,7 +499,7 @@
         min-height: 60vh;
     }
     
-    .historia-hero h1 {
+    .historia-hero h1{
         font-size: 2rem;
     }
     
@@ -505,7 +530,7 @@
     }
     
     .galeria-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
     }
     
     .galeria-overlay {
