@@ -424,7 +424,6 @@ h6 { font-size: var(--font-size-lg); }
   width: 100%;
 }
 
-/* ===== PRÓXIMO PARTIDO ===== */
 .proximo-partido {
   padding: var(--spacing-xl) 0;
   background-color: var(--barca-blue);
@@ -556,7 +555,6 @@ h6 { font-size: var(--font-size-lg); }
   box-shadow: 0 8px 25px rgba(165, 0, 68, 0.4);
 }
 
-/* ===== ESTADÍSTICAS ===== */
 .stats-section {
   padding: var(--spacing-xl) 0;
   background-color: var(--gray-lighter);
@@ -599,7 +597,6 @@ h6 { font-size: var(--font-size-lg); }
   font-size: 1rem;
 }
 
-/* ===== JUGADORES DESTACADOS ===== */
 .jugadores-destacados {
   padding: var(--spacing-xl) 0;
   background-color: var(--white);
@@ -707,7 +704,6 @@ h6 { font-size: var(--font-size-lg); }
   font-weight: 500;
 }
 
-/* ===== FOOTER ===== */
 .footer {
   background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-blue-dark) 50%, var(--barca-red) 100%);
   color: var(--white);
@@ -777,7 +773,6 @@ h6 { font-size: var(--font-size-lg); }
   width: 100%;
 }
 
-/* Social Links */
 .social-links {
   display: flex;
   flex-direction: column;
@@ -827,7 +822,6 @@ h6 { font-size: var(--font-size-lg); }
   border-radius: 8px;
 }
 
-/* ===== PÁGINA GALERÍA ===== */
 .page-hero {
   background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
   padding: var(--spacing-xl) 0;
@@ -981,13 +975,11 @@ h6 { font-size: var(--font-size-lg); }
 
 
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .nav-menu {
     gap: var(--spacing-xs);
   }
   
-  /* ===== ESTILOS BASE ===== */
   * {
     margin: 0;
     padding: 0;
@@ -1016,7 +1008,6 @@ h6 { font-size: var(--font-size-lg); }
   h6 { font-size: var(--font-size-lg); }
   
   
-  /* ===== HERO PRINCIPAL (INDEX) ===== */
   .hero-main {
     background: url('../img/camp nou 1.webp') center/cover;
     min-height: 600px;
@@ -1226,7 +1217,7 @@ h6 { font-size: var(--font-size-lg); }
     width: 100%;
   }
   
-  /* ===== NOTICIAS HOME ===== */
+
   .home-noticias {
     padding: var(--spacing-xl) 0;
     background-color: var(--white);
@@ -1378,7 +1369,6 @@ h6 { font-size: var(--font-size-lg); }
     width: 100%;
   }
   
-  /* ===== PRÓXIMO PARTIDO ===== */
   .proximo-partido {
     padding: var(--spacing-xl) 0;
     background-color: var(--barca-blue);
@@ -1510,7 +1500,6 @@ h6 { font-size: var(--font-size-lg); }
     box-shadow: 0 8px 25px rgba(165, 0, 68, 0.4);
   }
   
-  /* ===== ESTADÍSTICAS ===== */
   .stats-section {
     padding: var(--spacing-xl) 0;
     background-color: var(--gray-lighter);
@@ -1553,7 +1542,6 @@ h6 { font-size: var(--font-size-lg); }
     font-size: 1rem;
   }
   
-  /* ===== JUGADORES DESTACADOS ===== */
   .jugadores-destacados {
     padding: var(--spacing-xl) 0;
     background-color: var(--white);
@@ -1661,7 +1649,6 @@ h6 { font-size: var(--font-size-lg); }
     font-weight: 500;
   }
   
-  /* ===== FOOTER ===== */
   .footer {
     background-color: var(--gray-dark);
     color: var(--white);
@@ -1738,7 +1725,6 @@ h6 { font-size: var(--font-size-lg); }
     font-size: 0.9rem;
   }
   
-  /* ===== PÁGINA GALERÍA ===== */
   .page-hero {
     background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
     padding: var(--spacing-xl) 0;
@@ -1890,10 +1876,6 @@ h6 { font-size: var(--font-size-lg); }
     box-shadow: 0 4px 15px rgba(237, 187, 0, 0.4);
   }
   
-  
-
-  
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .nav-menu {
       gap: var(--spacing-xs);
@@ -2071,17 +2053,12 @@ h6 { font-size: var(--font-size-lg); }
       height: 200px;
     }
     
-    /* responsive modal removed for JS-free design */
-    
     .page-hero-content h1 {
       font-size: var(--font-size-3xl);
     }
   }
 }
 
-  /* ===== NAVIGATION (merged from nav_style.css) ===== */
-
-  /* Contenedor principal de la navegaci f3n (estilo nuevo) */
   .navbar-new {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -2096,15 +2073,14 @@ h6 { font-size: var(--font-size-lg); }
     max-width: none;
   }
 
-  /* Links de navegaci f3n a la derecha */
   .nav-links-right {
     display: flex;
     list-style: none;
-    gap: 0.6rem; /* reducido para que quepan en una sola línea */
+    gap: 0.6rem; 
     margin: 0;
     padding: 0;
     justify-content: flex-end;
-    flex-wrap: nowrap; /* evitar salto a segunda línea */
+    flex-wrap: nowrap; 
     grid-column: 3;
     align-items: center;
   }
@@ -2114,8 +2090,8 @@ h6 { font-size: var(--font-size-lg); }
     text-decoration: none;
     font-family: var(--font-heading);
     font-weight: 500;
-    font-size: 0.78rem; /* ligero ajuste */
-    padding: 0.25rem 0.6rem; /* padding reducido */
+    font-size: 0.78rem; 
+    padding: 0.25rem 0.6rem; 
     border-radius: 18px;
     transition: all 0.22s ease;
     position: relative;
@@ -2125,7 +2101,7 @@ h6 { font-size: var(--font-size-lg); }
     display: inline-block;
     max-width: 10rem;
     overflow: hidden;
-    text-overflow: ellipsis; /* evita que textos largos rompan el layout */
+    text-overflow: ellipsis; 
   }
 
   .nav-links-right li a:hover {
@@ -2146,7 +2122,6 @@ h6 { font-size: var(--font-size-lg); }
     transform: translateY(-2px);
   }
 
-  /* T edtulo Barcelona en el centro */
   .nav-center {
     display: flex;
     justify-content: center;
@@ -2178,18 +2153,17 @@ h6 { font-size: var(--font-size-lg); }
     }
   }
 
-  /* Logo y motto (centrado sobre el motto) */
   .nav-left {
     display: flex;
-    flex-direction: row; /* título - logo - motto en una fila */
-    align-items: center; /* alinear verticalmente */
+    flex-direction: row; 
+    align-items: center; 
     justify-content: flex-start;
     gap: 0.6rem;
     grid-column: 1;
   }
 
   .nav-logo {
-    width: 76px; /* aumentado para destacar */
+    width: 76px; 
     height: 76px;
     object-fit: contain;
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
@@ -2204,18 +2178,17 @@ h6 { font-size: var(--font-size-lg); }
 
   .nav-motto {
     font-family: var(--font-heading);
-    font-size: 1rem; /* tamaño aumentado */
+    font-size: 1rem; 
     color: var(--barca-gold);
     font-weight: 700;
-    text-transform: none; /* conservar acentos y mayúsculas normales */
+    text-transform: none; 
     letter-spacing: 0.6px;
     margin: 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.45);
-    text-align: center; /* centrado bajo el logo */
+    text-align: center; 
     line-height: 1; 
   }
 
-  /* Espaciado para el título dentro del grupo izquierdo */
   .barcelona-title {
     margin: 0;
     font-size: 1.9rem;
@@ -2229,7 +2202,6 @@ h6 { font-size: var(--font-size-lg); }
       letter-spacing: 1px;
     }
 
-    /* suavizamos el espaciado sin permitir salto de línea */
     .nav-links-right {
       gap: 0.5rem;
       flex-wrap: nowrap;
@@ -2265,13 +2237,12 @@ h6 { font-size: var(--font-size-lg); }
       justify-self: center;
     }
     
-  /* En pantallas < 992px permitimos que la navegación se apile */
   .nav-links-right {
     grid-column: 1;
     grid-row: 3;
     justify-content: center;
     gap: 0.8rem;
-    flex-wrap: wrap; /* volver a permitir wrap para móviles */
+    flex-wrap: wrap; 
   }
     
     .barcelona-title {
@@ -2280,7 +2251,7 @@ h6 { font-size: var(--font-size-lg); }
     }
 
     .nav-logo {
-      width: 60px; /* reducir desde 76 para pantallas medianas */
+      width: 60px; 
       height: 60px;
     }
   }
