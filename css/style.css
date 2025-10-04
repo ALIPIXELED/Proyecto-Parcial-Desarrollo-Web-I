@@ -43,25 +43,25 @@
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--gray-dark);
+  font-family: 'Roboto', sans-serif; /* var(--font-body) */
+  color: #2B2B2B; /* var(--gray-dark) */
   line-height: 1.6;
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: 'Poppins', sans-serif; /* var(--font-heading) */
   font-weight: 700;
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   line-height: 1.2;
 }
 
-h1 { font-size: var(--font-size-5xl); }
-h2 { font-size: var(--font-size-4xl); }
-h3 { font-size: var(--font-size-3xl); }
-h4 { font-size: var(--font-size-2xl); }
-h5 { font-size: var(--font-size-xl); }
-h6 { font-size: var(--font-size-lg); }
+h1 { font-size: 3rem; /* var(--font-size-5xl) */ }
+h2 { font-size: 2.25rem; /* var(--font-size-4xl) */ }
+h3 { font-size: 1.875rem; /* var(--font-size-3xl) */ }
+h4 { font-size: 1.5rem; /* var(--font-size-2xl) */ }
+h5 { font-size: 1.25rem; /* var(--font-size-xl) */ }
+h6 { font-size: 1.125rem; /* var(--font-size-lg) */ }
 
 
 .hero-main {
@@ -77,7 +77,7 @@ h6 { font-size: var(--font-size-lg); }
 .hero-content h1 {
   color: white;
   font-size: 4rem;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 1.5rem; /* var(--spacing-md) */
   letter-spacing: 3px;
   text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
   font-weight: 900;
@@ -85,20 +85,20 @@ h6 { font-size: var(--font-size-lg); }
 
 
 .hero-subtitle {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--spacing-xl);
+  font-size: 1.25rem; /* var(--font-size-xl) */
+  margin-bottom: 3rem; /* var(--spacing-xl) */
   text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
 }
 
 .hero-buttons {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 1.5rem; /* var(--spacing-md) */
   justify-content: center;
 }
 
 .header {
-  background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-  padding: var(--spacing-sm) 0;
+  background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+  padding: 1rem 0; /* var(--spacing-sm) */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -108,7 +108,7 @@ h6 { font-size: var(--font-size-lg); }
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 1.5rem; /* var(--spacing-md) */
 }
 
 .navbar {
@@ -123,7 +123,7 @@ h6 { font-size: var(--font-size-lg); }
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
 }
 
 .logo-img {
@@ -139,8 +139,8 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .logo h2 {
-  color: var(--white);
-  font-size: var(--font-size-xl);
+  color: #FFFFFF; /* var(--white) */
+  font-size: 1.25rem; /* var(--font-size-xl) */
   margin: 0;
   font-weight: 800;
   letter-spacing: 1px;
@@ -148,13 +148,13 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .logo:hover h2 {
-  color: var(--barca-gold);
+  color: #EDBB00; /* var(--barca-gold) */
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
   margin: 0;
   padding: 0;
   align-items: center;
@@ -166,7 +166,7 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .nav-menu a {
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -195,14 +195,14 @@ h6 { font-size: var(--font-size-lg); }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-  background-color: var(--barca-red);
+  background-color: #A50044; /* var(--barca-red) */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(165, 0, 68, 0.3);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--barca-gold), #D4A100);
-  color: var(--black);
+  background: linear-gradient(135deg, #EDBB00 /* var(--barca-gold) */, #D4A100);
+  color: #000000; /* var(--black) */
   padding: 14px 32px;
   border-radius: 8px;
   text-decoration: none;
@@ -231,16 +231,16 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #D4A100, var(--barca-gold));
+  background: linear-gradient(135deg, #D4A100, #EDBB00 /* var(--barca-gold) */);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(237, 187, 0, 0.4);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   padding: 14px 32px;
-  border: 2px solid var(--white);
+  border: 2px solid #FFFFFF; /* var(--white) */
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
@@ -258,13 +258,13 @@ h6 { font-size: var(--font-size-lg); }
   left: 0;
   width: 0;
   height: 100%;
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
 }
 
 .btn-secondary:hover {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
@@ -274,23 +274,23 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .home-noticias {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--white);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #FFFFFF; /* var(--white) */
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 2rem; /* var(--spacing-lg) */
 }
 
 .section-header h2 {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
 }
 
 .link-ver-mas {
-  color: var(--barca-red);
+  color: #A50044; /* var(--barca-red) */
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -305,12 +305,12 @@ h6 { font-size: var(--font-size-lg); }
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: var(--barca-blue);
+  background-color: #004D98; /* var(--barca-blue) */
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-ver-mas:hover {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   transform: translateX(5px);
 }
 
@@ -321,11 +321,11 @@ h6 { font-size: var(--font-size-lg); }
 .noticias-home-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
 }
 
 .noticia-home-card {
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -336,7 +336,7 @@ h6 { font-size: var(--font-size-lg); }
 .noticia-home-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 40px rgba(0, 77, 152, 0.15);
-  border-color: var(--barca-blue);
+  border-color: #004D98; /* var(--barca-blue) */
 }
 
 .noticia-home-imagen {
@@ -355,8 +355,8 @@ h6 { font-size: var(--font-size-lg); }
   position: absolute;
   top: 10px;
   left: 10px;
-  background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
-  color: var(--white);
+  background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
+  color: #FFFFFF; /* var(--white) */
   padding: 6px 14px;
   border-radius: 20px;
   font-weight: 700;
@@ -371,31 +371,31 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .noticia-home-info {
-  padding: var(--spacing-md);
+  padding: 1.5rem; /* var(--spacing-md) */
 }
 
-.fecha-home {
-  display: block;
-  color: var(--gray-medium);
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-xs);
-}
+  .fecha-home {
+    display: block;
+    color: #666666; /* var(--gray-medium) */
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
+  }
 
-.noticia-home-info h3 {
-  color: var(--barca-blue);
-  font-size: 1.2rem;
-  margin-bottom: var(--spacing-sm);
-}
+  .noticia-home-info h3 {
+    color: #004D98; /* var(--barca-blue) */
+    font-size: 1.2rem;
+    margin-bottom: 1rem; /* var(--spacing-sm) */
+  }
 
-.noticia-home-info p {
-  color: var(--gray-dark);
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
+  .noticia-home-info p {
+    color: #2B2B2B; /* var(--gray-dark) */
+    margin-bottom: 1rem; /* var(--spacing-sm) */
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
 
 .link-noticia {
-  color: var(--barca-red);
+  color: #A50044; /* var(--barca-red) */
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
@@ -411,12 +411,12 @@ h6 { font-size: var(--font-size-lg); }
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: var(--barca-blue);
+  background-color: #004D98; /* var(--barca-blue) */
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-noticia:hover {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   transform: translateX(3px);
 }
 
@@ -424,36 +424,35 @@ h6 { font-size: var(--font-size-lg); }
   width: 100%;
 }
 
-/* ===== PRÓXIMO PARTIDO ===== */
 .proximo-partido {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--barca-blue);
-  color: var(--white);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #004D98; /* var(--barca-blue) */
+  color: #FFFFFF; /* var(--white) */
 }
 
 .proximo-partido h2 {
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 2rem; /* var(--spacing-lg) */
 }
 
 .partido-card {
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   border-radius: 12px;
-  padding: var(--spacing-xl);
+  padding: 3rem; /* var(--spacing-xl) */
   max-width: 800px;
   margin: 0 auto;
 }
 
-.partido-info .competicion {
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-}
+  .partido-info .competicion {
+    text-align: center;
+    margin-bottom: 2rem; /* var(--spacing-lg) */
+  }
 
 .competicion-badge {
   display: inline-block;
-  background-color: var(--barca-gold);
-  color: var(--black);
+  background-color: #EDBB00; /* var(--barca-gold) */
+  color: #000000; /* var(--black) */
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 700;
@@ -462,16 +461,16 @@ h6 { font-size: var(--font-size-lg); }
 
 .fecha-partido {
   display: block;
-  color: var(--gray-medium);
-  margin-top: var(--spacing-xs);
+  color: #666666; /* var(--gray-medium) */
+  margin-top: 0.5rem; /* var(--spacing-xs) */
 }
 
 .partido-equipos {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: var(--spacing-xl) 0;
-  padding: var(--spacing-lg);
+  margin: 3rem 0; /* var(--spacing-xl) */
+  padding: 2rem; /* var(--spacing-lg) */
   background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
   border-radius: 16px;
 }
@@ -484,9 +483,9 @@ h6 { font-size: var(--font-size-lg); }
   width: 120px;
   height: 120px;
   object-fit: contain;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   padding: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -498,35 +497,35 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .equipo h3 {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   font-size: 1.5rem;
 }
 
 .vs {
   font-size: 2rem;
   font-weight: 900;
-  color: var(--barca-red);
+  color: #A50044; /* var(--barca-red) */
 }
 
 .partido-estadio {
   text-align: center;
-  margin: var(--spacing-lg) 0;
+  margin: 2rem 0; /* var(--spacing-lg) */
 }
 
 .partido-estadio p {
-  color: var(--gray-medium);
+  color: #666666; /* var(--gray-medium) */
 }
 
 .btn-ver-calendario {
   display: block;
-  background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-  color: var(--white);
+  background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+  color: #FFFFFF; /* var(--white) */
   text-align: center;
   padding: 14px 24px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
-  margin-top: var(--spacing-lg);
+  margin-top: 2rem; /* var(--spacing-lg) */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(0, 77, 152, 0.3);
   text-transform: uppercase;
@@ -551,26 +550,25 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .btn-ver-calendario:hover {
-  background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+  background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(165, 0, 68, 0.4);
 }
 
-/* ===== ESTADÍSTICAS ===== */
 .stats-section {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--gray-lighter);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #F5F5F5; /* var(--gray-lighter) */
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
 }
 
 .stat-card {
-  background-color: var(--white);
-  padding: var(--spacing-lg);
+  background-color: #FFFFFF; /* var(--white) */
+  padding: 2rem; /* var(--spacing-lg) */
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -581,38 +579,37 @@ h6 { font-size: var(--font-size-lg); }
 
 .stat-icon {
   font-size: 2.5rem;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
   display: inline-block;
 }
 
 
 .stat-number {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   font-size: 2.5rem;
   font-weight: 900;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.5rem; /* var(--spacing-xs) */
 }
 
 
 .stat-label {
-  color: var(--gray-medium);
+  color: #666666; /* var(--gray-medium) */
   font-size: 1rem;
 }
 
-/* ===== JUGADORES DESTACADOS ===== */
 .jugadores-destacados {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--white);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #FFFFFF; /* var(--white) */
 }
 
 .jugadores-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
 }
 
 .jugador-card {
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -624,11 +621,11 @@ h6 { font-size: var(--font-size-lg); }
 .jugador-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 40px rgba(0, 77, 152, 0.15);
-  border-color: var(--barca-blue);
+  border-color: #004D98; /* var(--barca-blue) */
 }
 
 .jugador-card:hover .jugador-numero {
-  background-color: var(--barca-red);
+  background-color: #A50044; /* var(--barca-red) */
   transform: scale(1.1);
 }
 
@@ -636,7 +633,7 @@ h6 { font-size: var(--font-size-lg); }
   position: relative;
   height: 300px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--gray-lighter), var(--white));
+  background: linear-gradient(135deg, #F5F5F5 /* var(--gray-lighter) */, #FFFFFF /* var(--white) */);
   border-radius: 12px 12px 0 0;
 }
 
@@ -656,8 +653,8 @@ h6 { font-size: var(--font-size-lg); }
   position: absolute;
   top: 15px;
   right: 15px;
-  background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-  color: var(--white);
+  background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+  color: #FFFFFF; /* var(--white) */
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -668,57 +665,56 @@ h6 { font-size: var(--font-size-lg); }
   font-weight: 900;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 6px 20px rgba(0, 77, 152, 0.4);
-  border: 3px solid var(--white);
+  border: 3px solid #FFFFFF; /* var(--white) */
 }
 
 .jugador-card:hover .jugador-numero {
-  background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+  background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
   transform: scale(1.1);
   box-shadow: 0 8px 25px rgba(165, 0, 68, 0.5);
 }
 
 .jugador-info {
-  padding: var(--spacing-md);
+  padding: 1.5rem; /* var(--spacing-md) */
   text-align: center;
 }
 
 .jugador-info h3 {
-  color: var(--barca-blue);
+  color: #004D98; /* var(--barca-blue) */
   font-size: 1.1rem;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.5rem; /* var(--spacing-xs) */
 }
 
 .jugador-posicion {
-  color: var(--gray-medium);
+  color: #666666; /* var(--gray-medium) */
   font-size: 0.9rem;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
 }
 
 .jugador-stats {
   display: flex;
   justify-content: space-around;
-  padding-top: var(--spacing-sm);
-  border-top: 1px solid var(--gray-light);
+  padding-top: 1rem; /* var(--spacing-sm) */
+  border-top: 1px solid #E5E5E5; /* var(--gray-light) */
 }
 
 .jugador-stats span {
   font-size: 0.85rem;
-  color: var(--gray-dark);
+  color: #2B2B2B; /* var(--gray-dark) */
   font-weight: 500;
 }
 
-/* ===== FOOTER ===== */
 .footer {
-  background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-blue-dark) 50%, var(--barca-red) 100%);
-  color: var(--white);
-  padding: var(--spacing-xl) 0 var(--spacing-md);
+  background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */ 0%, #003366 /* var(--barca-blue-dark) */ 50%, #A50044 /* var(--barca-red) */ 100%);
+  color: #FFFFFF; /* var(--white) */
+  padding: 3rem 0 1.5rem; /* var(--spacing-xl) var(--spacing-md) */
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-lg);
+  gap: 3rem; /* var(--spacing-xl) */
+  margin-bottom: 2rem; /* var(--spacing-lg) */
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -726,17 +722,17 @@ h6 { font-size: var(--font-size-lg); }
 
 .footer-section h3,
 .footer-section h4 {
-  color: var(--barca-gold);
-  margin-bottom: var(--spacing-sm);
+  color: #EDBB00; /* var(--barca-gold) */
+  margin-bottom: 1rem; /* var(--spacing-sm) */
   font-size: 1.2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .footer-desc {
-  color: var(--gray-light);
+  color: #E5E5E5; /* var(--gray-light) */
   font-size: 0.9rem;
   line-height: 1.6;
-  margin-top: var(--spacing-sm);
+  margin-top: 1rem; /* var(--spacing-sm) */
 }
 
 .footer-section ul {
@@ -744,11 +740,11 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .footer-section ul li {
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.5rem; /* var(--spacing-xs) */
 }
 
 .footer-section a {
-  color: var(--gray-light);
+  color: #E5E5E5; /* var(--gray-light) */
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.95rem;
@@ -763,12 +759,12 @@ h6 { font-size: var(--font-size-lg); }
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: var(--barca-gold);
+  background-color: #EDBB00; /* var(--barca-gold) */
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-section a:hover {
-  color: var(--barca-gold);
+  color: #EDBB00; /* var(--barca-gold) */
   transform: translateX(3px);
   text-shadow: 0 0 8px rgba(237, 187, 0, 0.6);
 }
@@ -777,15 +773,14 @@ h6 { font-size: var(--font-size-lg); }
   width: 100%;
 }
 
-/* Social Links */
 .social-links {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: 0.5rem; /* var(--spacing-xs) */
 }
 
 .social-link {
-  color: var(--gray-light);
+  color: #E5E5E5; /* var(--gray-light) */
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.95rem;
@@ -801,12 +796,12 @@ h6 { font-size: var(--font-size-lg); }
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: var(--barca-gold);
+  background-color: #EDBB00; /* var(--barca-gold) */
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover {
-  color: var(--barca-gold);
+  color: #EDBB00; /* var(--barca-gold) */
   transform: translateX(3px);
   text-shadow: 0 0 8px rgba(237, 187, 0, 0.6);
 }
@@ -816,53 +811,52 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .footer-bottom {
-  border-top: 2px solid var(--barca-gold);
-  padding-top: var(--spacing-md);
+  border-top: 2px solid #EDBB00; /* var(--barca-gold) */
+  padding-top: 1.5rem; /* var(--spacing-md) */
   text-align: center;
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   font-size: 0.9rem;
   background: rgba(0, 0, 0, 0.2);
-  margin-top: var(--spacing-lg);
-  padding: var(--spacing-md);
+  margin-top: 2rem; /* var(--spacing-lg) */
+  padding: 1.5rem; /* var(--spacing-md) */
   border-radius: 8px;
 }
 
-/* ===== PÁGINA GALERÍA ===== */
 .page-hero {
-  background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
-  padding: var(--spacing-xl) 0;
+  background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #A50044 /* var(--barca-red) */);
+  padding: 3rem 0; /* var(--spacing-xl) */
   text-align: center;
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
 }
 
 .page-hero-content h1 {
-  color: var(--white);
-  font-size: var(--font-size-4xl);
-  margin-bottom: var(--spacing-sm);
+  color: #FFFFFF; /* var(--white) */
+  font-size: 2.25rem; /* var(--font-size-4xl) */
+  margin-bottom: 2rem; /* var(--spacing-sm) */
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .page-hero-content p {
-  font-size: var(--font-size-lg);
+  font-size: 1.125rem; /* var(--font-size-lg) */
   opacity: 0.9;
 }
 
 .galeria-filtros {
-  padding: var(--spacing-lg) 0;
-  background-color: var(--gray-lighter);
+  padding: 2rem 0; /* var(--spacing-lg) */
+  background-color: #F5F5F5; /* var(--gray-lighter) */
 }
 
 .filtros-buttons {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
   flex-wrap: wrap;
 }
 
 .filtro-btn {
-  background-color: var(--white);
-  color: var(--barca-blue);
-  border: 2px solid var(--barca-blue);
+  background-color: #FFFFFF; /* var(--white) */
+  color: #004D98; /* var(--barca-blue) */
+  border: 2px solid #004D98; /* var(--barca-blue) */
   padding: 10px 20px;
   border-radius: 25px;
   font-weight: 600;
@@ -875,21 +869,21 @@ h6 { font-size: var(--font-size-lg); }
 
 .filtro-btn:hover,
 .filtro-btn.active {
-  background-color: var(--barca-blue);
-  color: var(--white);
+  background-color: #004D98; /* var(--barca-blue) */
+  color: #FFFFFF; /* var(--white) */
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 77, 152, 0.3);
 }
 
 .galeria-principal {
-  padding: var(--spacing-xl) 0;
-  background-color: var(--white);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #FFFFFF; /* var(--white) */
 }
 
 .galeria-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
 }
 
 .galeria-item {
@@ -898,7 +892,7 @@ h6 { font-size: var(--font-size-lg); }
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
 }
 
 .galeria-item:hover {
@@ -933,7 +927,7 @@ h6 { font-size: var(--font-size-lg); }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: var(--spacing-md);
+  padding: 1.5rem; /* var(--spacing-md) */
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -943,25 +937,25 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .galeria-info {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
 }
 
 .galeria-info h3 {
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   font-size: 1.3rem;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 0.5rem; /* var(--spacing-xs) */
   font-weight: 700;
 }
 
 .galeria-info p {
-  color: var(--white);
+  color: #FFFFFF; /* var(--white) */
   opacity: 0.9;
   font-size: 0.9rem;
 }
 
 .galeria-ver {
-  background: linear-gradient(135deg, var(--barca-gold), #D4A100);
-  color: var(--black);
+  background: linear-gradient(135deg, #EDBB00 /* var(--barca-gold) */, #D4A100);
+  color: #000000; /* var(--black) */
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
@@ -974,20 +968,18 @@ h6 { font-size: var(--font-size-lg); }
 }
 
 .galeria-ver:hover {
-  background: linear-gradient(135deg, #D4A100, var(--barca-gold));
+  background: linear-gradient(135deg, #D4A100, #EDBB00 /* var(--barca-gold) */);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(237, 187, 0, 0.4);
 }
 
 
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .nav-menu {
-    gap: var(--spacing-xs);
+  gap: 0.5rem; /* var(--spacing-xs) */
   }
   
-  /* ===== ESTILOS BASE ===== */
   * {
     margin: 0;
     padding: 0;
@@ -995,28 +987,27 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   body {
-    font-family: var(--font-body);
-    color: var(--gray-dark);
+    font-family: 'Roboto', sans-serif; /* var(--font-body) */
+    color: #2B2B2B; /* var(--gray-dark) */
     line-height: 1.6;
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: 'Poppins', sans-serif; /* var(--font-heading) */
     font-weight: 700;
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     line-height: 1.2;
   }
   
-  h1 { font-size: var(--font-size-5xl); }
-  h2 { font-size: var(--font-size-4xl); }
-  h3 { font-size: var(--font-size-3xl); }
-  h4 { font-size: var(--font-size-2xl); }
-  h5 { font-size: var(--font-size-xl); }
-  h6 { font-size: var(--font-size-lg); }
+  h1 { font-size: 3rem; /* var(--font-size-5xl) */ }
+  h2 { font-size: 2.25rem; /* var(--font-size-4xl) */ }
+  h3 { font-size: 1.875rem; /* var(--font-size-3xl) */ }
+  h4 { font-size: 1.5rem; /* var(--font-size-2xl) */ }
+  h5 { font-size: 1.25rem; /* var(--font-size-xl) */ }
+  h6 { font-size: 1.125rem; /* var(--font-size-lg) */ }
   
   
-  /* ===== HERO PRINCIPAL (INDEX) ===== */
   .hero-main {
     background: url('../img/camp nou 1.webp') center/cover;
     min-height: 600px;
@@ -1024,13 +1015,13 @@ h6 { font-size: var(--font-size-lg); }
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
   }
   
   .hero-content h1 {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     font-size: 4rem;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1.5rem; /* var(--spacing-md) */
     letter-spacing: 3px;
     text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
     font-weight: 900;
@@ -1038,20 +1029,20 @@ h6 { font-size: var(--font-size-lg); }
 
   
   .hero-subtitle {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-xl);
+    font-size: 1.25rem; /* var(--font-size-xl) */
+    margin-bottom: 3rem; /* var(--spacing-xl) */
     text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
   }
   
   .hero-buttons {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 1.5rem; /* var(--spacing-md) */
     justify-content: center;
   }
   
   .header {
-    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-    padding: var(--spacing-sm) 0;
+    background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+    padding: 1rem 0; /* var(--spacing-sm) */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -1061,7 +1052,7 @@ h6 { font-size: var(--font-size-lg); }
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 1.5rem; /* var(--spacing-md) */
   }
   
   .navbar {
@@ -1076,7 +1067,7 @@ h6 { font-size: var(--font-size-lg); }
   .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
   }
   
   .logo-img {
@@ -1092,8 +1083,8 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .logo h2 {
-    color: var(--white);
-    font-size: var(--font-size-xl);
+    color: #FFFFFF; /* var(--white) */
+    font-size: 1.25rem; /* var(--font-size-xl) */
     margin: 0;
     font-weight: 800;
     letter-spacing: 1px;
@@ -1101,13 +1092,13 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .logo:hover h2 {
-    color: var(--barca-gold);
+    color: #EDBB00; /* var(--barca-gold) */
   }
   
   .nav-menu {
     display: flex;
     list-style: none;
-    gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
     margin: 0;
     padding: 0;
     align-items: center;
@@ -1119,7 +1110,7 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .nav-menu a {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1148,14 +1139,14 @@ h6 { font-size: var(--font-size-lg); }
   
   .nav-menu a:hover,
   .nav-menu a.active {
-    background-color: var(--barca-red);
+    background-color: #A50044; /* var(--barca-red) */
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(165, 0, 68, 0.3);
   }
   
   .btn-primary {
-    background: linear-gradient(135deg, var(--barca-gold), #D4A100);
-    color: var(--black);
+    background: linear-gradient(135deg, #EDBB00 /* var(--barca-gold) */, #D4A100);
+    color: #000000; /* var(--black) */
     padding: 14px 32px;
     border-radius: 8px;
     text-decoration: none;
@@ -1184,16 +1175,16 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, #D4A100, var(--barca-gold));
+    background: linear-gradient(135deg, #D4A100, #EDBB00 /* var(--barca-gold) */);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(237, 187, 0, 0.4);
   }
   
   .btn-secondary {
     background-color: transparent;
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     padding: 14px 32px;
-    border: 2px solid var(--white);
+    border: 2px solid #FFFFFF; /* var(--white) */
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
@@ -1211,13 +1202,13 @@ h6 { font-size: var(--font-size-lg); }
     left: 0;
     width: 0;
     height: 100%;
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }
   
   .btn-secondary:hover {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
   }
@@ -1226,25 +1217,25 @@ h6 { font-size: var(--font-size-lg); }
     width: 100%;
   }
   
-  /* ===== NOTICIAS HOME ===== */
+
   .home-noticias {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--white);
+    padding: 3rem 0; /* var(--spacing-xl) */
+    background-color: #FFFFFF; /* var(--white) */
   }
   
   .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem; /* var(--spacing-lg) */
   }
   
   .section-header h2 {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
   }
   
   .link-ver-mas {
-    color: var(--barca-red);
+    color: #A50044; /* var(--barca-red) */
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1259,12 +1250,12 @@ h6 { font-size: var(--font-size-lg); }
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--barca-blue);
+    background-color: #004D98; /* var(--barca-blue) */
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .link-ver-mas:hover {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     transform: translateX(5px);
   }
   
@@ -1275,11 +1266,11 @@ h6 { font-size: var(--font-size-lg); }
   .noticias-home-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-lg);
+    gap: 2rem; /* var(--spacing-lg) */
   }
   
   .noticia-home-card {
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -1290,7 +1281,7 @@ h6 { font-size: var(--font-size-lg); }
   .noticia-home-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 12px 40px rgba(0, 77, 152, 0.15);
-    border-color: var(--barca-blue);
+    border-color: #004D98; /* var(--barca-blue) */
   }
   
   .noticia-home-imagen {
@@ -1309,8 +1300,8 @@ h6 { font-size: var(--font-size-lg); }
     position: absolute;
     top: 10px;
     left: 10px;
-    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
-    color: var(--white);
+    background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
+    color: #FFFFFF; /* var(--white) */
     padding: 6px 14px;
     border-radius: 20px;
     font-weight: 700;
@@ -1325,31 +1316,31 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .noticia-home-info {
-    padding: var(--spacing-md);
+    padding: 1.5rem; /* var(--spacing-md) */
   }
   
   .fecha-home {
     display: block;
-    color: var(--gray-medium);
+    color: #666666; /* var(--gray-medium) */
     font-size: 0.9rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
   }
   
   .noticia-home-info h3 {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     font-size: 1.2rem;
-    margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
   }
   
   .noticia-home-info p {
-    color: var(--gray-dark);
-    margin-bottom: var(--spacing-sm);
+    color: #2B2B2B; /* var(--gray-dark) */
+  margin-bottom: 1rem; /* var(--spacing-sm) */
     line-height: 1.5;
     font-size: 0.95rem;
   }
   
   .link-noticia {
-    color: var(--barca-red);
+    color: #A50044; /* var(--barca-red) */
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
@@ -1365,12 +1356,12 @@ h6 { font-size: var(--font-size-lg); }
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--barca-blue);
+    background-color: #004D98; /* var(--barca-blue) */
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .link-noticia:hover {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     transform: translateX(3px);
   }
   
@@ -1378,36 +1369,35 @@ h6 { font-size: var(--font-size-lg); }
     width: 100%;
   }
   
-  /* ===== PRÓXIMO PARTIDO ===== */
   .proximo-partido {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--barca-blue);
-    color: var(--white);
+    padding: 3rem 0; /* var(--spacing-xl) */
+    background-color: #004D98; /* var(--barca-blue) */
+    color: #FFFFFF; /* var(--white) */
   }
   
   .proximo-partido h2 {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 2rem; /* var(--spacing-lg) */
   }
   
   .partido-card {
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
     border-radius: 12px;
-    padding: var(--spacing-xl);
+    padding: 3rem; /* var(--spacing-xl) */
     max-width: 800px;
     margin: 0 auto;
   }
   
   .partido-info .competicion {
     text-align: center;
-    margin-bottom: var(--spacing-lg);
+  margin-bottom: 2rem; /* var(--spacing-lg) */
   }
   
   .competicion-badge {
     display: inline-block;
-    background-color: var(--barca-gold);
-    color: var(--black);
+    background-color: #EDBB00; /* var(--barca-gold) */
+    color: #000000; /* var(--black) */
     padding: 8px 20px;
     border-radius: 20px;
     font-weight: 700;
@@ -1416,16 +1406,16 @@ h6 { font-size: var(--font-size-lg); }
   
   .fecha-partido {
     display: block;
-    color: var(--gray-medium);
-    margin-top: var(--spacing-xs);
+    color: #666666; /* var(--gray-medium) */
+    margin-top: 0.5rem; /* var(--spacing-xs) */
   }
   
   .partido-equipos {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: var(--spacing-xl) 0;
-    padding: var(--spacing-lg);
+    margin: 3rem 0; /* var(--spacing-xl) */
+    padding: 2rem; /* var(--spacing-lg) */
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     border-radius: 16px;
   }
@@ -1438,9 +1428,9 @@ h6 { font-size: var(--font-size-lg); }
     width: 120px;
     height: 120px;
     object-fit: contain;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem; /* var(--spacing-sm) */
     border-radius: 50%;
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
     padding: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1452,35 +1442,35 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .equipo h3 {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     font-size: 1.5rem;
   }
   
   .vs {
     font-size: 2rem;
     font-weight: 900;
-    color: var(--barca-red);
+    color: #A50044; /* var(--barca-red) */
   }
   
   .partido-estadio {
     text-align: center;
-    margin: var(--spacing-lg) 0;
+  margin: 2rem 0; /* var(--spacing-lg) */
   }
   
   .partido-estadio p {
-    color: var(--gray-medium);
+    color: #666666; /* var(--gray-medium) */
   }
   
   .btn-ver-calendario {
     display: block;
-    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-    color: var(--white);
+    background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+    color: #FFFFFF; /* var(--white) */
     text-align: center;
     padding: 14px 24px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    margin-top: var(--spacing-lg);
+  margin-top: 2rem; /* var(--spacing-lg) */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 77, 152, 0.3);
     text-transform: uppercase;
@@ -1505,26 +1495,25 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .btn-ver-calendario:hover {
-    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(165, 0, 68, 0.4);
   }
   
-  /* ===== ESTADÍSTICAS ===== */
   .stats-section {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--gray-lighter);
+    padding: 3rem 0; /* var(--spacing-xl) */
+    background-color: #F5F5F5; /* var(--gray-lighter) */
   }
   
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
   }
   
   .stat-card {
-    background-color: var(--white);
-    padding: var(--spacing-lg);
+    background-color: #FFFFFF; /* var(--white) */
+    padding: 2rem; /* var(--spacing-lg) */
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -1535,38 +1524,37 @@ h6 { font-size: var(--font-size-lg); }
   
   .stat-icon {
     font-size: 2.5rem;
-    margin-bottom: var(--spacing-sm);
+  margin-bottom: 1rem; /* var(--spacing-sm) */
     display: inline-block;
   }
   
   
   .stat-number {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     font-size: 2.5rem;
     font-weight: 900;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
   }
   
   
   .stat-label {
-    color: var(--gray-medium);
+    color: #666666; /* var(--gray-medium) */
     font-size: 1rem;
   }
   
-  /* ===== JUGADORES DESTACADOS ===== */
   .jugadores-destacados {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--white);
+    padding: 3rem 0; /* var(--spacing-xl) */
+    background-color: #FFFFFF; /* var(--white) */
   }
   
   .jugadores-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
   }
   
   .jugador-card {
-    background-color: var(--white);
+    background-color: #FFFFFF; /* var(--white) */
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -1578,11 +1566,11 @@ h6 { font-size: var(--font-size-lg); }
   .jugador-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 12px 40px rgba(0, 77, 152, 0.15);
-    border-color: var(--barca-blue);
+    border-color: #004D98; /* var(--barca-blue) */
   }
   
   .jugador-card:hover .jugador-numero {
-    background-color: var(--barca-red);
+    background-color: #A50044; /* var(--barca-red) */
     transform: scale(1.1);
   }
   
@@ -1590,7 +1578,7 @@ h6 { font-size: var(--font-size-lg); }
     position: relative;
     height: 300px;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--gray-lighter), var(--white));
+    background: linear-gradient(135deg, #F5F5F5 /* var(--gray-lighter) */, #FFFFFF /* var(--white) */);
     border-radius: 12px 12px 0 0;
   }
   
@@ -1610,8 +1598,8 @@ h6 { font-size: var(--font-size-lg); }
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
-    color: var(--white);
+    background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #003366 /* var(--barca-blue-dark) */);
+    color: #FFFFFF; /* var(--white) */
     width: 55px;
     height: 55px;
     border-radius: 50%;
@@ -1622,57 +1610,56 @@ h6 { font-size: var(--font-size-lg); }
     font-weight: 900;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 6px 20px rgba(0, 77, 152, 0.4);
-    border: 3px solid var(--white);
+    border: 3px solid #FFFFFF; /* var(--white) */
   }
   
   .jugador-card:hover .jugador-numero {
-    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    background: linear-gradient(135deg, #A50044 /* var(--barca-red) */, #7A0033 /* var(--barca-red-dark) */);
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(165, 0, 68, 0.5);
   }
   
   .jugador-info {
-    padding: var(--spacing-md);
+    padding: 1.5rem; /* var(--spacing-md) */
     text-align: center;
   }
   
   .jugador-info h3 {
-    color: var(--barca-blue);
+    color: #004D98; /* var(--barca-blue) */
     font-size: 1.1rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
   }
   
   .jugador-posicion {
-    color: var(--gray-medium);
+    color: #666666; /* var(--gray-medium) */
     font-size: 0.9rem;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem; /* var(--spacing-sm) */
   }
   
   .jugador-stats {
     display: flex;
     justify-content: space-around;
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--gray-light);
+  padding-top: 1rem; /* var(--spacing-sm) */
+  border-top: 1px solid #E5E5E5; /* var(--gray-light) */
   }
   
   .jugador-stats span {
     font-size: 0.85rem;
-    color: var(--gray-dark);
+  color: #2B2B2B; /* var(--gray-dark) */
     font-weight: 500;
   }
   
-  /* ===== FOOTER ===== */
   .footer {
-    background-color: var(--gray-dark);
-    color: var(--white);
-    padding: var(--spacing-xl) 0 var(--spacing-md);
+    background-color: #2B2B2B; /* var(--gray-dark) */
+    color: #FFFFFF; /* var(--white) */
+  padding: 3rem 0 1.5rem; /* var(--spacing-xl) var(--spacing-md) */
   }
   
   .footer-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-lg);
+    gap: 3rem; /* var(--spacing-xl) */
+    margin-bottom: 2rem; /* var(--spacing-lg) */
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -1680,16 +1667,16 @@ h6 { font-size: var(--font-size-lg); }
   
   .footer-section h3,
   .footer-section h4 {
-    color: var(--barca-gold);
-    margin-bottom: var(--spacing-sm);
+    color: #EDBB00; /* var(--barca-gold) */
+    margin-bottom: 1rem; /* var(--spacing-sm) */
     font-size: 1.2rem;
   }
   
   .footer-desc {
-    color: var(--gray-light);
+    color: #E5E5E5; /* var(--gray-light) */
     font-size: 0.9rem;
     line-height: 1.6;
-    margin-top: var(--spacing-sm);
+    margin-top: 1rem; /* var(--spacing-sm) */
   }
   
   .footer-section ul {
@@ -1697,11 +1684,11 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .footer-section ul li {
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
   }
   
   .footer-section a {
-    color: var(--gray-light);
+    color: #E5E5E5; /* var(--gray-light) */
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.95rem;
@@ -1716,12 +1703,12 @@ h6 { font-size: var(--font-size-lg); }
     height: 1px;
     bottom: 0;
     left: 0;
-    background-color: var(--barca-gold);
+    background-color: #EDBB00; /* var(--barca-gold) */
     transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .footer-section a:hover {
-    color: var(--barca-gold);
+    color: #EDBB00; /* var(--barca-gold) */
     transform: translateX(3px);
   }
   
@@ -1732,48 +1719,47 @@ h6 { font-size: var(--font-size-lg); }
   
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: var(--spacing-md);
+  padding-top: 1.5rem; /* var(--spacing-md) */
     text-align: center;
-    color: var(--gray-light);
+    color: #E5E5E5; /* var(--gray-light) */
     font-size: 0.9rem;
   }
   
-  /* ===== PÁGINA GALERÍA ===== */
   .page-hero {
-    background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-    color: var(--white);
+    background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */, #A50044 /* var(--barca-red) */);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  text-align: center;
+  color: #FFFFFF; /* var(--white) */
   }
   
   .page-hero-content h1 {
-    color: var(--white);
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-sm);
+    color: #FFFFFF; /* var(--white) */
+    font-size: 2.25rem; /* var(--font-size-4xl) */
+    margin-bottom: 1rem; /* var(--spacing-sm) */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
   
   .page-hero-content p {
-    font-size: var(--font-size-lg);
+    font-size: 1.125rem; /* var(--font-size-lg) */
     opacity: 0.9;
   }
   
   .galeria-filtros {
-    padding: var(--spacing-lg) 0;
-    background-color: var(--gray-lighter);
+    padding: 2rem 0; /* var(--spacing-lg) */
+    background-color: #F5F5F5; /* var(--gray-lighter) */
   }
   
   .filtros-buttons {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-sm);
+    gap: 1rem; /* var(--spacing-sm) */
     flex-wrap: wrap;
   }
   
   .filtro-btn {
-    background-color: var(--white);
-    color: var(--barca-blue);
-    border: 2px solid var(--barca-blue);
+    background-color: #FFFFFF; /* var(--white) */
+    color: #004D98; /* var(--barca-blue) */
+    border: 2px solid #004D98; /* var(--barca-blue) */
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: 600;
@@ -1786,21 +1772,21 @@ h6 { font-size: var(--font-size-lg); }
   
   .filtro-btn:hover,
   .filtro-btn.active {
-    background-color: var(--barca-blue);
-    color: var(--white);
+  background-color: #004D98; /* var(--barca-blue) */
+  color: #FFFFFF; /* var(--white) */
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 77, 152, 0.3);
   }
   
   .galeria-principal {
-    padding: var(--spacing-xl) 0;
-    background-color: var(--white);
+  padding: 3rem 0; /* var(--spacing-xl) */
+  background-color: #FFFFFF; /* var(--white) */
   }
   
   .galeria-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
   }
   
   .galeria-item {
@@ -1809,7 +1795,7 @@ h6 { font-size: var(--font-size-lg); }
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background-color: var(--white);
+  background-color: #FFFFFF; /* var(--white) */
   }
   
   .galeria-item:hover {
@@ -1844,7 +1830,7 @@ h6 { font-size: var(--font-size-lg); }
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: var(--spacing-md);
+    padding: 1.5rem; /* var(--spacing-md) */
     opacity: 0;
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -1854,25 +1840,25 @@ h6 { font-size: var(--font-size-lg); }
   }
   
   .galeria-info {
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 1rem; /* var(--spacing-sm) */
   }
   
   .galeria-info h3 {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     font-size: 1.3rem;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.5rem; /* var(--spacing-xs) */
     font-weight: 700;
   }
   
   .galeria-info p {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     opacity: 0.9;
     font-size: 0.9rem;
   }
   
   .galeria-ver {
-    background: linear-gradient(135deg, var(--barca-gold), #D4A100);
-    color: var(--black);
+    background: linear-gradient(135deg, #EDBB00 /* var(--barca-gold) */, #D4A100);
+    color: #000000; /* var(--black) */
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
@@ -1884,19 +1870,15 @@ h6 { font-size: var(--font-size-lg); }
     font-size: 0.85rem;
   }
   
-  .galeria-ver:hover {
-    background: linear-gradient(135deg, #D4A100, var(--barca-gold));
+    .galeria-ver:hover {
+    background: linear-gradient(135deg, #D4A100, #EDBB00 /* var(--barca-gold) */);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(237, 187, 0, 0.4);
   }
   
-  
-
-  
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .nav-menu {
-      gap: var(--spacing-xs);
+      gap: 0.5rem; /* var(--spacing-xs) */
     }
     
     .nav-menu a {
@@ -1908,7 +1890,7 @@ h6 { font-size: var(--font-size-lg); }
   @media (max-width: 992px) {
     .footer-content {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--spacing-lg);
+  gap: 2rem; /* var(--spacing-lg) */
     }
   }
 
@@ -1954,7 +1936,7 @@ h6 { font-size: var(--font-size-lg); }
     
     .footer-content {
       grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
+      gap: 2rem; /* var(--spacing-lg) */
       text-align: center;
     }
     
@@ -1962,16 +1944,16 @@ h6 { font-size: var(--font-size-lg); }
       flex-direction: row;
       justify-content: center;
       flex-wrap: wrap;
-      gap: var(--spacing-sm);
+  gap: 1rem; /* var(--spacing-sm) */
     }
     
     .galeria-grid {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-md);
+  gap: 1.5rem; /* var(--spacing-md) */
     }
     
     .filtros-buttons {
-      gap: var(--spacing-xs);
+  gap: 0.5rem; /* var(--spacing-xs) */
     }
     
     .filtro-btn {
@@ -1981,8 +1963,8 @@ h6 { font-size: var(--font-size-lg); }
     
     .partido-equipos {
       flex-direction: column;
-      gap: var(--spacing-lg);
-      padding: var(--spacing-md);
+  gap: 2rem; /* var(--spacing-lg) */
+  padding: 1.5rem; /* var(--spacing-md) */
     }
     
     .equipo img {
@@ -1996,14 +1978,14 @@ h6 { font-size: var(--font-size-lg); }
     
     .navbar {
       flex-direction: column;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm) 0;
+  gap: 1rem; /* var(--spacing-sm) */
+  padding: 1rem 0; /* var(--spacing-sm) */
     }
     
     .nav-menu {
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--spacing-xs);
+  gap: 0.5rem; /* var(--spacing-xs) */
     }
     
     .nav-menu a {
@@ -2021,7 +2003,7 @@ h6 { font-size: var(--font-size-lg); }
     }
     
     .logo h2 {
-      font-size: var(--font-size-lg);
+      font-size: 1.125rem; /* var(--font-size-lg) */
     }
   }
   
@@ -2044,7 +2026,7 @@ h6 { font-size: var(--font-size-lg); }
     }
     
     .hero-subtitle {
-      font-size: var(--font-size-lg);
+      font-size: 1.125rem; /* var(--font-size-lg) */
     }
     
     .equipo img {
@@ -2064,30 +2046,25 @@ h6 { font-size: var(--font-size-lg); }
     
     .galeria-grid {
       grid-template-columns: 1fr;
-      gap: var(--spacing-sm);
+      gap: 1rem; /* var(--spacing-sm) */
     }
     
     .galeria-imagen {
       height: 200px;
     }
     
-    /* responsive modal removed for JS-free design */
-    
     .page-hero-content h1 {
-      font-size: var(--font-size-3xl);
+      font-size: 1.875rem; /* var(--font-size-3xl) */
     }
   }
 }
 
-  /* ===== NAVIGATION (merged from nav_style.css) ===== */
-
-  /* Contenedor principal de la navegaci f3n (estilo nuevo) */
   .navbar-new {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-blue-dark) 100%);
+    background: linear-gradient(135deg, #004D98 /* var(--barca-blue) */ 0%, #003366 /* var(--barca-blue-dark) */ 100%);
     box-shadow: 0 4px 20px rgba(0, 77, 152, 0.3);
     position: relative;
     min-height: 80px;
@@ -2096,26 +2073,25 @@ h6 { font-size: var(--font-size-lg); }
     max-width: none;
   }
 
-  /* Links de navegaci f3n a la derecha */
   .nav-links-right {
     display: flex;
     list-style: none;
-    gap: 0.6rem; /* reducido para que quepan en una sola línea */
+    gap: 0.6rem; 
     margin: 0;
     padding: 0;
     justify-content: flex-end;
-    flex-wrap: nowrap; /* evitar salto a segunda línea */
+    flex-wrap: nowrap; 
     grid-column: 3;
     align-items: center;
   }
 
   .nav-links-right li a {
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     text-decoration: none;
-    font-family: var(--font-heading);
+    font-family: 'Poppins', sans-serif; /* var(--font-heading) */
     font-weight: 500;
-    font-size: 0.78rem; /* ligero ajuste */
-    padding: 0.25rem 0.6rem; /* padding reducido */
+    font-size: 0.78rem; 
+    padding: 0.25rem 0.6rem; 
     border-radius: 18px;
     transition: all 0.22s ease;
     position: relative;
@@ -2125,7 +2101,7 @@ h6 { font-size: var(--font-size-lg); }
     display: inline-block;
     max-width: 10rem;
     overflow: hidden;
-    text-overflow: ellipsis; /* evita que textos largos rompan el layout */
+    text-overflow: ellipsis; 
   }
 
   .nav-links-right li a:hover {
@@ -2135,18 +2111,17 @@ h6 { font-size: var(--font-size-lg); }
   }
 
   .nav-links-right li a.active {
-    background-color: var(--barca-red);
-    color: var(--white);
+    background-color: #A50044; /* var(--barca-red) */
+    color: #FFFFFF; /* var(--white) */
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(165, 0, 68, 0.4);
   }
 
   .nav-links-right li a.active:hover {
-    background-color: var(--barca-red-dark);
+    background-color: #7A0033; /* var(--barca-red-dark) */
     transform: translateY(-2px);
   }
 
-  /* T edtulo Barcelona en el centro */
   .nav-center {
     display: flex;
     justify-content: center;
@@ -2156,14 +2131,14 @@ h6 { font-size: var(--font-size-lg); }
   }
 
   .barcelona-title {
-    font-family: var(--font-heading);
+    font-family: 'Poppins', sans-serif; /* var(--font-heading) */
     font-size: 2rem;
     font-weight: 900;
-    color: var(--white);
+    color: #FFFFFF; /* var(--white) */
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
     margin: 0;
-    background: linear-gradient(45deg, var(--white) 0%, var(--barca-gold) 100%);
+    background: linear-gradient(45deg, #FFFFFF /* var(--white) */ 0%, #EDBB00 /* var(--barca-gold) */ 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -2178,18 +2153,17 @@ h6 { font-size: var(--font-size-lg); }
     }
   }
 
-  /* Logo y motto (centrado sobre el motto) */
   .nav-left {
     display: flex;
-    flex-direction: row; /* título - logo - motto en una fila */
-    align-items: center; /* alinear verticalmente */
+    flex-direction: row; 
+    align-items: center; 
     justify-content: flex-start;
     gap: 0.6rem;
     grid-column: 1;
   }
 
   .nav-logo {
-    width: 76px; /* aumentado para destacar */
+    width: 76px; 
     height: 76px;
     object-fit: contain;
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
@@ -2203,19 +2177,18 @@ h6 { font-size: var(--font-size-lg); }
   }
 
   .nav-motto {
-    font-family: var(--font-heading);
-    font-size: 1rem; /* tamaño aumentado */
-    color: var(--barca-gold);
+    font-family: 'Poppins', sans-serif; /* var(--font-heading) */
+    font-size: 1rem; 
+    color: #EDBB00; /* var(--barca-gold) */
     font-weight: 700;
-    text-transform: none; /* conservar acentos y mayúsculas normales */
+    text-transform: none; 
     letter-spacing: 0.6px;
     margin: 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.45);
-    text-align: center; /* centrado bajo el logo */
+    text-align: center; 
     line-height: 1; 
   }
 
-  /* Espaciado para el título dentro del grupo izquierdo */
   .barcelona-title {
     margin: 0;
     font-size: 1.9rem;
@@ -2229,7 +2202,6 @@ h6 { font-size: var(--font-size-lg); }
       letter-spacing: 1px;
     }
 
-    /* suavizamos el espaciado sin permitir salto de línea */
     .nav-links-right {
       gap: 0.5rem;
       flex-wrap: nowrap;
@@ -2265,13 +2237,12 @@ h6 { font-size: var(--font-size-lg); }
       justify-self: center;
     }
     
-  /* En pantallas < 992px permitimos que la navegación se apile */
   .nav-links-right {
     grid-column: 1;
     grid-row: 3;
     justify-content: center;
     gap: 0.8rem;
-    flex-wrap: wrap; /* volver a permitir wrap para móviles */
+    flex-wrap: wrap; 
   }
     
     .barcelona-title {
@@ -2280,7 +2251,7 @@ h6 { font-size: var(--font-size-lg); }
     }
 
     .nav-logo {
-      width: 60px; /* reducir desde 76 para pantallas medianas */
+      width: 60px; 
       height: 60px;
     }
   }
