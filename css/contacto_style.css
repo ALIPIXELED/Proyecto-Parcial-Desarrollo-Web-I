@@ -1,0 +1,267 @@
+/*  IMPORTAR FUENTES  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/*  VARIABLES DEL FC BARCELONA  */
+:root {
+  --barca-blue: #004D98;
+  --barca-blue-dark: #003366;
+  --barca-red: #A50044;
+  --barca-red-dark: #7A0033;
+  --barca-gold: #EDBB00;
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray-dark: #2B2B2B;
+  --gray-medium: #666666;
+  --gray-light: #E5E5E5;
+  --gray-lighter: #F5F5F5;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+/*  ESTILOS BASE  */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #e8ecf0;
+}
+
+/*  SECCION CONTACTO  */
+.contacto-section {
+  padding: 50px 20px;
+  min-height: 100vh;
+}
+
+.contacto-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.contacto-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--barca-blue);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.contacto-header p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--gray-medium);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.contacto-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/*  INFORMACION DE CONTACTO  */
+.contacto-info {
+  background-color: var(--barca-blue);
+  padding: 40px;
+  border: 3px solid var(--barca-blue-dark);
+  border-radius: 30px;
+}
+
+.contacto-info h2 {
+  font-family: var(--font-heading);
+  color: var(--barca-gold);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 28px;
+  padding: 22px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--barca-gold);
+}
+
+.info-icon {
+  font-size: 2.3rem;
+  margin-right: 18px;
+  min-width: 55px;
+  text-align: center;
+}
+
+.info-content h3 {
+  font-family: var(--font-heading);
+  color: var(--white);
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-content p {
+  font-family: var(--font-body);
+  color: var(--white);
+  margin: 0;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.formulario-contacto {
+  background-color: var(--white);
+  padding: 40px;
+  border: 3px solid var(--gray-light);
+  border-top: 6px solid var(--barca-red);
+  border-radius: 30px;
+}
+
+.formulario-contacto h2 {
+  font-family: var(--font-heading);
+  color: var(--barca-blue);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-heading);
+  color: var(--gray-dark);
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.form-group label span {
+  color: var(--barca-red);
+  font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--gray-light);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  background-color: var(--gray-lighter);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--barca-blue);
+  background-color: var(--white);
+}
+
+.form-group textarea {
+  min-height: 140px;
+  font-family: var(--font-body);
+}
+
+/* MENSAJES DE ERROR  */
+.error-message {
+  color: var(--barca-red);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  margin-top: 6px;
+  display: none;
+  font-weight: 500;
+}
+
+/*  BOTON ENVIAR  */
+.btn-enviar {
+  background-color: var(--barca-red);
+  color: var(--white);
+  padding: 15px 35px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.btn-enviar:hover {
+  background-color: var(--barca-red-dark);
+}
+
+/*  MENSAJE DE ENVIADO CON EXITO   */
+.mensaje-exito {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px 20px;
+  margin-bottom: 22px;
+  border: 2px solid #c3e6cb;
+  border-left: 5px solid #28a745;
+  display: none;
+  text-align: center;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+}
+
+/*  RESPONSIVO  */
+@media (max-width: 1024px) {
+  .contacto-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contacto-header h1 {
+    font-size: 2.3rem;
+  }
+
+  .contacto-header p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .formulario-contacto,
+  .contacto-info {
+    padding: 28px;
+  }
+
+  .btn-enviar {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacto-section {
+    padding: 35px 15px;
+  }
+
+  .contacto-header h1 {
+    font-size: 1.9rem;
+  }
+
+  .info-icon {
+    font-size: 2rem;
+    min-width: 48px;
+  }
+
+  .contacto-info h2,
+  .formulario-contacto h2 {
+    font-size: 1.7rem;
+  }
+}

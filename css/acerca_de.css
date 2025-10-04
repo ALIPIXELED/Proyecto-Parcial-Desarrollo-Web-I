@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --barca-blue: #004D98;
+  --barca-blue-dark: #003366;
+  --barca-red: #A50044;
+  --barca-red-dark: #7A0033;
+  --barca-gold: #EDBB00;
+  --white: #FFFFFF;
+  --black: #000000;
+  --gray-dark: #2B2B2B;
+  --gray-medium: #666666;
+  --gray-light: #E5E5E5;
+  --gray-lighter: #F5F5F5;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+.acerca-section {
+  padding: 55px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f0 100%);
+}
+
+.acerca-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.acerca-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--barca-blue);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 77, 152, 0.1);
+}
+
+.decorative-line {
+  width: 110px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--barca-blue), var(--barca-red), var(--barca-gold));
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.contenido-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  max-width: 1350px;
+  margin: 0 auto 75px;
+}
+
+.info-card {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--barca-blue);
+   margin-bottom: 60px;
+}
+
+.info-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 77, 152, 0.2);
+}
+
+.card-icon {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
+}
+
+.info-card h2 {
+  font-family: var(--font-heading);
+  color: var(--barca-blue);
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-card p {
+  font-family: var(--font-body);
+  color: var(--gray-dark);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+
+.info-card strong {
+  color: var(--barca-red);
+  font-weight: 600;
+}
+
+.stats-mini {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 2px solid var(--gray-light);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--barca-blue);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--gray-medium);
+  margin-top: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tecnologias {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 23px;
+}
+
+.tech-badge {
+  font-family: var(--font-heading);
+  background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
+  color: var(--white);
+  padding: 9px 18px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 8px rgba(0, 77, 152, 0.3);
+}
+
+.equipo-section {
+  max-width: 1350px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.equipo-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--barca-blue);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.equipo-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--gray-medium);
+  margin: 28px auto;
+  max-width: 590px;
+}
+
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  margin-top: 45px;
+}
+
+.miembro-card {
+  background: linear-gradient(135deg, var(--barca-blue) 0%, var(--barca-blue-dark) 100%);
+  padding: 38px 28px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 77, 152, 0.3);
+}
+
+.miembro-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 77, 152, 0.4);
+}
+
+.miembro-avatar {
+  width: 95px;
+  height: 95px;
+  background: linear-gradient(135deg, var(--barca-gold), #ffd700);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-family: var(--font-heading);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--barca-blue);
+  box-shadow: 0 6px 15px rgba(237, 187, 0, 0.4);
+}
+
+.miembro-card h3 {
+  font-family: var(--font-heading);
+  color: var(--white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.miembro-rol {
+  font-family: var(--font-body);
+  color: var(--barca-gold);
+  font-size: 0.98rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.miembro-foto {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.miembro-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.miembro-info {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .contenido-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .equipo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .acerca-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .info-card {
+    padding: 28px;
+  }
+
+  .stats-mini {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .equipo-section h2 {
+    font-size: 1.95rem;
+  }
+
+  .equipo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .acerca-section {
+    padding: 38px 15px;
+  }
+
+  .acerca-header h1 {
+    font-size: 1.95rem;
+  }
+
+  .info-card h2 {
+    font-size: 1.45rem;
+  }
+
+  .equipo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .miembro-avatar {
+    width: 78px;
+    height: 78px;
+    font-size: 1.45rem;
+  }
+}

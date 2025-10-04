@@ -1,0 +1,420 @@
+/* ===== ESTILOS ESPECiFICOS PARA CALENDARIO ===== */
+  
+  /* Filtros de calendario */
+  .calendario-filtros {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--gray-lighter);
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .filtros-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filtro-btn {
+    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .filtro-btn:hover {
+    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(165, 0, 68, 0.3);
+  }
+
+  .filtro-btn.active {
+    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    box-shadow: 0 4px 15px rgba(165, 0, 68, 0.4);
+  }
+
+  /* Calendario principal */
+  .calendario-principal {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--white);
+  }
+
+  /* Mes del calendario */
+  .mes-calendario {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .mes-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 3px solid var(--barca-blue);
+    position: relative;
+  }
+
+  .mes-header h2 {
+    color: var(--barca-blue);
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  .mes-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--barca-red), var(--barca-gold));
+    border-radius: 2px;
+  }
+
+  /* Grid de partidos -> ahora lista por filas (fecha | info | acciones) */
+  .partidos-grid {
+    display: block;
+    margin-top: var(--spacing-lg);
+  }
+
+  /* Tarjeta de partido */
+  .partido-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 77, 152, 0.06);
+    border: 1px solid rgba(0, 77, 152, 0.08);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex; /* fila: fecha | info | acciones */
+    align-items: stretch;
+    gap: 0;
+    padding: 0; /* los bloques internos controlan el padding */
+    margin-bottom: var(--spacing-md);
+  }
+
+  .partido-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 77, 152, 0.15);
+    border-color: var(--barca-blue);
+  }
+
+  .partido-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--barca-blue), var(--barca-red));
+  }
+
+  /* Fecha del partido */
+  .partido-fecha {
+    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
+    color: var(--white);
+    padding: var(--spacing-md);
+    text-align: center;
+    width: 160px; /* columna fija */
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .dia-semana {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    opacity: 0.9;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .dia-numero {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .mes {
+    display: block;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Información del partido */
+  .partido-info {
+    padding: var(--spacing-lg);
+    flex: 1; /* ocupa espacio central */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Badge de competición */
+  .competicion-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .competicion-badge.laliga {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: var(--black);
+  }
+
+  .competicion-badge.champions {
+    background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+    color: var(--white);
+  }
+
+  .competicion-badge.copa {
+    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    color: var(--white);
+  }
+
+  /* Equipos */
+  .equipos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, rgba(0, 77, 152, 0.05), rgba(165, 0, 68, 0.05));
+    border-radius: 12px;
+  }
+
+  .equipos .equipo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .equipos .equipo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: var(--spacing-xs);
+    border-radius: 50%;
+    background-color: var(--white);
+    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .partido-card:hover .equipos .equipo img {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 77, 152, 0.2);
+  }
+
+  .equipos .equipo span {
+    font-weight: 600;
+    color: var(--barca-blue);
+    font-size: var(--font-size-sm);
+  }
+
+  .equipos .vs {
+    font-size: var(--font-size-xl);
+    font-weight: 900;
+    color: var(--barca-red);
+    margin: 0 var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Detalles del partido */
+  .partido-detalles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--gray-light);
+    margin-top: var(--spacing-md);
+  }
+
+  .hora {
+    background: linear-gradient(135deg, var(--barca-gold), #D4A100);
+    color: var(--black);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+  }
+
+  .estadio {
+    color: var(--gray-medium);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+  }
+
+  /* Acciones del partido */
+  .partido-acciones {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-sm);
+    width: 220px; /* columna fija para botones */
+    min-width: 160px;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+  }
+
+  .btn-entradas {
+    flex: 0 0 auto;
+    background: linear-gradient(135deg, var(--barca-blue), var(--barca-blue-dark));
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-entradas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  .btn-entradas:hover::before {
+    left: 100%;
+  }
+
+  .btn-entradas:hover {
+    background: linear-gradient(135deg, var(--barca-red), var(--barca-red-dark));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(165, 0, 68, 0.3);
+  }
+
+  /* Responsive para calendario */
+  @media (max-width: 768px) {
+    .filtros-buttons {
+      gap: 0.5rem;
+    }
+
+    .filtro-btn {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    .partidos-grid {
+      margin-top: var(--spacing-lg);
+    }
+
+    .partido-card {
+      flex-direction: column;
+      gap: 0;
+      margin: 0 var(--spacing-sm);
+    }
+
+    .partido-fecha {
+      width: 100%;
+      min-width: auto;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: var(--spacing-sm);
+      gap: var(--spacing-md);
+    }
+
+    .partido-info {
+      padding: var(--spacing-md);
+    }
+
+    .equipos {
+      flex-direction: column;
+      gap: var(--spacing-md);
+      padding: var(--spacing-sm);
+    }
+
+    .equipos .vs {
+      transform: rotate(0deg);
+      margin: var(--spacing-xs) 0;
+    }
+
+    .equipos .equipo img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .partido-acciones {
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    }
+
+    .mes-header h2 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .dia-numero {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .filtros-buttons {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .filtro-btn {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.6rem;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .partido-card {
+      margin: 0;
+    }
+
+    .partido-info {
+      padding: var(--spacing-md);
+    }
+
+    .partido-acciones {
+      padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    }
+
+    .equipos .equipo img {
+      width: 45px;
+      height: 45px;
+    }
+
+    .equipos .equipo span {
+      font-size: var(--font-size-xs);
+    }
+  }

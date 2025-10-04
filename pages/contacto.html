@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - FC Barcelona</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contacto_style.css">
+</head>
+<body>
+    
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="header">
+        <nav class="navbar-new">
+            <!-- Logo, titulo y motto a la izquierda (BARCELONA a la izquierda del motto) -->
+            <div class="nav-left">
+                <h1 class="barcelona-title">BARCELONA</h1>
+                <img src="../img/Calendario_img/Logo.png" alt="FC Barcelona Logo" class="nav-logo">
+                <p class="nav-motto">Més que un club</p>
+            </div>
+            
+            <!-- Links a la derecha -->
+            <ul class="nav-links-right">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="plantilla.html">Plantilla</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="tabla.html">Posiciones</a></li>
+                <li><a href="historia.html">Historia</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
+                <li><a href="acerca.html">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="contacto-section">
+        <div class="contacto-header">
+            <h1>Contacto</h1>
+            <p>¿Tienes alguna pregunta o comentario? Estamos aquí para ayudarte. Contáctanos y te responderemos lo antes posible.</p>
+        </div>
+
+        <div class="contacto-container">
+            <!-- INFORMACIÓN DE CONTACTO -->
+            <div class="contacto-info">
+                <h2>Información de Contacto</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Dirección</h3>
+                        <p>C. d'Arístides Maillol, 12<br>08028 Barcelona, España</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h3>Correo Electrónico</h3>
+                        <p>info@fcbarcelona.com<br>socios@fcbarcelona.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Teléfono</h3>
+                        <p>+34 902 18 99 00<br>Lunes a Viernes: 9:00 - 18:00h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORMULARIO DE CONTACTO -->
+            <div class="formulario-contacto">
+                <h2>Envíanos un Mensaje</h2>
+                
+                <div class="mensaje-exito" id="mensajeExito">
+                    ✓ ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+                </div>
+
+                <form id="formContacto" novalidate>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo <span>*</span></label>
+                        <input 
+                            type="text" 
+                            id="nombre" 
+                            name="nombre" 
+                            placeholder="Ej: Juan Pérez"
+                            required
+                            minlength="3"
+                            maxlength="50"
+                            pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                        >
+                        <span class="error-message">Por favor, ingresa un nombre válido (mínimo 3 caracteres, solo letras)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico <span>*</span></label>
+                        <input 
+                            type="email" 
+                            id="correo" 
+                            name="correo" 
+                            placeholder="ejemplo@correo.com"
+                            required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        >
+                        <span class="error-message">Por favor, ingresa un correo electrónico válido</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono <span>*</span></label>
+                        <input 
+                            type="tel" 
+                            id="telefono" 
+                            name="telefono" 
+                            placeholder="Ej: +34 612345678 o 61234567"
+                            required
+                            pattern="[+]?[0-9]{8,15}"
+                            minlength="8"
+                            maxlength="15"
+                        >
+                        <span class="error-message">Por favor, ingresa un número de teléfono válido (8-15 dígitos)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje <span>*</span></label>
+                        <textarea 
+                            id="mensaje" 
+                            name="mensaje" 
+                            placeholder="Escribe tu mensaje aquí..."
+                            required
+                            minlength="10"
+                            maxlength="500"
+                        ></textarea>
+                        <span class="error-message">Por favor, ingresa un mensaje (mínimo 10 caracteres)</span>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-section">
+              <h3>FC Barcelona</h3>
+              <p>Més que un club</p>
+              <p class="footer-desc">El FC Barcelona es más que un club de fútbol. Es un símbolo de identidad catalana y uno de los equipos más exitosos del mundo.</p>
+            </div>
+            <div class="footer-section">
+              <h4>Navegación</h4>
+              <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="plantilla.html">Plantilla</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="historia.html">Historia</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Información</h4>
+              <ul>
+                <li><a href="tabla.html">Posiciones</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="acerca.html">Acerca de</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Redes Sociales</h4>
+              <div class="social-links">
+                <a href="https://www.facebook.com/fcbarcelona/?locale=es_LA" class="social-link">Facebook</a>
+                <a href="https://x.com/fcbarcelona/?lang=es" class="social-link">Twitter</a>
+                <a href="https://www.instagram.com/fcbarcelona/" class="social-link">Instagram</a>
+                <a href="https://www.youtube.com/@FCBarcelona" class="social-link">YouTube</a>
+            </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 FC Barcelona. Proyecto Universitario - Desarrollo Web I</p>
+          </div>
+        </div>
+
+</body>
+</html>
+</body>
+</html>
