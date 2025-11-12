@@ -277,9 +277,67 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; 2025 FC Barcelona. Proyecto Universitario - Desarrollo Web I</p>
+        <button type="button" class="footer-login-trigger" id="footer-login-trigger">Iniciar sesión</button>
       </div>
     </div>
   </footer>
 
+  <!-- MODALES -->
+  <div class="modal-overlay hidden" id="login-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" id="login-close-btn" aria-label="Cerrar formulario">&times;</button>
+      <h3>Iniciar sesión</h3>
+      <p class="modal-subtitle">Ingresa con tu usuario asignado para acceder al panel interno.</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary btn-block">Iniciar sesión</button>
+        <p class="form-error" id="login-error" aria-live="polite"></p>
+        <p class="auth-status" id="auth-status" aria-live="polite"></p>
+      </form>
+      <div class="demo-cred">
+        <p><strong>Administrador:</strong> admin@barca.com / AdminFCB123</p>
+        <p><strong>Empleado:</strong> empleado@barca.com / EmpleadoFCB123</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="panel-modal" role="dialog" aria-modal="true">
+    <div class="modal-card panel-card">
+      <button class="modal-close" id="panel-close-btn" aria-label="Cerrar panel">&times;</button>
+      <div class="dashboard-header">
+        <div>
+          <p class="bienvenida">Sesión activa como <span id="user-email-display"></span></p>
+          <span class="role-pill" id="user-role"></span>
+        </div>
+        <button id="logout-btn" class="btn-secondary">Cerrar sesión</button>
+      </div>
+
+      <div class="dashboard-content">
+        <section class="acciones-section">
+          <div class="section-header">
+            <h3>Acciones disponibles</h3>
+          </div>
+          <div id="actions-list" class="acciones-grid"></div>
+        </section>
+
+        <section class="permisos-card">
+          <h3>Permisos por rol</h3>
+          <ul>
+            <li><strong>Administrador general:</strong> acceso total al tablero interno.</li>
+            <li><strong>Empleado:</strong> acceso a operaciones diarias (reportes, contenidos, solicitudes).</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/auth.js"></script>
 </body>
 </html>
