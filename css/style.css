@@ -2391,7 +2391,8 @@ h6 { font-size: 1.125rem;  }
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
   border: 1px solid #dbe0ea;
   border-radius: 10px;
   padding: 0.75rem 0.9rem;
@@ -2401,7 +2402,8 @@ h6 { font-size: 1.125rem;  }
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: #004d98;
   box-shadow: 0 0 0 3px rgba(0, 77, 152, 0.15);
   outline: none;
@@ -2649,6 +2651,116 @@ body.modal-open {
 
 .permisos-card li strong {
   color: #004d98;
+}
+
+.section-helper {
+  margin-bottom: 1rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.registro-empleados,
+.gestion-plantilla {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  padding: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+}
+
+.registro-empleados + .gestion-plantilla {
+  margin-top: 1.5rem;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.grid-form textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.user-list,
+.plantilla-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.user-list-wrapper,
+.plantilla-list-wrapper {
+  margin-top: 1rem;
+}
+
+.user-list li,
+.plantilla-list li {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.list-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.list-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.list-btn.edit {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+.list-btn.delete {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.list-btn:hover {
+  opacity: 0.8;
+}
+
+.plantilla-role {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.plantilla-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #636363;
 }
 
 @media (max-width: 768px) {

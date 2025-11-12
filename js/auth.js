@@ -1,4 +1,4 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js';
+import { initializeApp, getApp, getApps } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,6 +7,8 @@ import {
   onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js';
 import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js';
+
+const DASHBOARD_URL = 'pages/dashboard.html';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAggSy9FTC9EJ1X2TRBBMtBjIsbnRM7rHQ',
@@ -19,99 +21,57 @@ const firebaseConfig = {
 };
 
 const DEFAULT_ACCOUNTS = [
-  { email: 'admin@barca.com', password: 'AdminFCB123', role: 'admin' },
-  { email: 'empleado@barca.com', password: 'EmpleadoFCB123', role: 'empleado' },
+  { email: 'admin@barca.com', password: 'AdminFCB123', role: 'admin', nombre: 'Administrador General' },
+  { email: 'empleado@barca.com', password: 'EmpleadoFCB123', role: 'empleado', nombre: 'Empleado Demo' },
 ];
 
-let app;
-try {
-  app = initializeApp(firebaseConfig);
-} catch (error) {
-  console.error('Error inicializando Firebase:', error);
-}
-
-const auth = app ? getAuth(app) : null;
-const db = app ? getFirestore(app) : null;
-const secondaryApp = app ? initializeApp(firebaseConfig, 'SecondaryApp') : null;
-const secondaryAuth = secondaryApp ? getAuth(secondaryApp) : null;
-
-const actionsCatalog = [
-  {
-    id: 'reports',
-    title: 'Reportes estratégicos',
-    description: 'Visualiza métricas clave del club, finanzas, fichajes y desempeño deportivo.',
-    roles: ['admin', 'empleado'],
-  },
-  {
-    id: 'content',
-    title: 'Gestión de contenidos',
-    description: 'Actualiza noticias, calendarios y módulos visuales del sitio.',
-    roles: ['admin', 'empleado'],
-  },
-  {
-    id: 'requests',
-    title: 'Revisión de solicitudes',
-    description: 'Da seguimiento a solicitudes internas y mensajes del área de contacto.',
-    roles: ['admin', 'empleado'],
-  },
-  {
-    id: 'adminTools',
-    title: 'Control interno',
-    description: 'Herramientas reservadas al Administrador general.',
-    roles: ['admin'],
-  },
-];
-
-const roleLabels = {
-  admin: 'Administrador general',
-  empleado: 'Empleado',
+const FALLBACK_ROLES = {
+  'admin@barca.com': 'admin',
+  'empleado@barca.com': 'empleado',
 };
+
+const primaryApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(primaryApp);
+const db = getFirestore(primaryApp);
+
+let secondaryApp;
+try {
+  secondaryApp = getApp('SecondaryApp');
+} catch (_error) {
+  secondaryApp = initializeApp(firebaseConfig, 'SecondaryApp');
+}
+const secondaryAuth = getAuth(secondaryApp);
+
+let redirectPending = false;
+let activeUser = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginModal = document.getElementById('login-modal');
-  const panelModal = document.getElementById('panel-modal');
   const footerTrigger = document.getElementById('footer-login-trigger');
   const loginCloseBtn = document.getElementById('login-close-btn');
-  const panelCloseBtn = document.getElementById('panel-close-btn');
+  const loginForm = document.getElementById('login-form');
+  const loginErrorEl = document.getElementById('login-error');
+  const authStatus = document.getElementById('auth-status');
 
-  if (!loginModal || !panelModal || !footerTrigger || !auth || !db) {
+  if (!loginModal || !footerTrigger || !auth) {
     console.warn('El módulo de autenticación no está disponible en esta página.');
     return;
   }
 
   seedDefaultAccounts();
 
-  const loginForm = document.getElementById('login-form');
-  const loginErrorEl = document.getElementById('login-error');
-  const authStatus = document.getElementById('auth-status');
-  const logoutBtn = document.getElementById('logout-btn');
-  const userEmailDisplay = document.getElementById('user-email-display');
-  const userRoleEl = document.getElementById('user-role');
-  const actionsListEl = document.getElementById('actions-list');
-  const modals = document.querySelectorAll('.modal-overlay');
-
-  let currentUser = null;
-
   footerTrigger.addEventListener('click', () => {
-    if (currentUser) {
-      openPanelModal();
-    } else {
-      openLoginModal();
+    if (activeUser) {
+      window.location.href = DASHBOARD_URL;
+      return;
     }
+    openModal(loginModal);
   });
-
   loginCloseBtn?.addEventListener('click', () => closeModal(loginModal));
-  panelCloseBtn?.addEventListener('click', () => closeModal(panelModal));
-  modals.forEach(modal => {
-    modal.addEventListener('click', event => {
-      if (event.target === modal) closeModal(modal);
-    });
-  });
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModal(loginModal);
-      closeModal(panelModal);
     }
   });
 
@@ -129,77 +89,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setAuthStatus('Sesión iniciada correctamente.', 'info');
-      loginForm.reset();
+      redirectPending = true;
+      setAuthStatus('Sesión iniciada. Redirigiendo...', 'info');
     } catch (error) {
       handleAuthError(error, setLoginError);
     }
   });
 
-  logoutBtn?.addEventListener('click', async () => {
-    try {
-      await signOut(auth);
-      setAuthStatus('Sesión cerrada.', 'info');
-      closeModal(panelModal);
-    } catch (error) {
-      handleAuthError(error, message => setAuthStatus(message, 'error'));
-    }
-  });
-
   onAuthStateChanged(auth, async user => {
+    activeUser = user;
     if (!user) {
-      currentUser = null;
-      userEmailDisplay.textContent = '';
-      userRoleEl.textContent = '';
-      actionsListEl.innerHTML = '';
-      closeModal(panelModal);
+      redirectPending = false;
+      footerTrigger.textContent = 'Iniciar sesión';
       return;
     }
 
-    try {
-      const role = await ensureUserDocument(user);
-      currentUser = { uid: user.uid, email: user.email ?? '', role };
-      userEmailDisplay.textContent = currentUser.email;
-      userRoleEl.textContent = roleLabels[role] || role;
-      renderActions(actionsListEl, role);
-      closeModal(loginModal);
-      openPanelModal();
-      setAuthStatus('', 'info');
-    } catch (error) {
-      console.error('Error obteniendo rol del usuario:', error);
-      setAuthStatus('No se pudo obtener tu rol. Intenta nuevamente.', 'error');
+    footerTrigger.textContent = 'Abrir panel';
+
+    await ensureUserDocument(user);
+
+    if (redirectPending) {
+      window.location.href = DASHBOARD_URL;
     }
   });
-
-  function openLoginModal() {
-    closeModal(panelModal);
-    openModal(loginModal);
-  }
-
-  function openPanelModal() {
-    if (!currentUser) {
-      openLoginModal();
-      return;
-    }
-    openModal(panelModal);
-  }
 
   function openModal(modal) {
-    if (!modal) return;
     modal.classList.remove('hidden');
     document.body.classList.add('modal-open');
   }
 
   function closeModal(modal) {
-    if (!modal) return;
     modal.classList.add('hidden');
-    if ([...modals].every(item => item.classList.contains('hidden'))) {
-      document.body.classList.remove('modal-open');
-    }
-    if (modal === loginModal) {
-      loginForm?.reset();
-      clearLoginFeedback();
-    }
+    document.body.classList.remove('modal-open');
+    loginForm?.reset();
+    clearLoginFeedback();
   }
 
   function clearLoginFeedback() {
@@ -209,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setLoginError(message) {
     if (loginErrorEl) loginErrorEl.textContent = message;
-    setAuthStatus('', 'info');
+    setAuthStatus('', 'error');
   }
 
   function setAuthStatus(message, status = 'info') {
@@ -221,24 +144,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function ensureUserDocument(user) {
   if (!user) return 'empleado';
-  const db = getFirestore();
-  const userDocRef = doc(db, 'users', user.uid);
-  const snapshot = await getDoc(userDocRef);
-  if (snapshot.exists()) {
-    return snapshot.data().role || 'empleado';
-  }
+  const userDocRef = doc(getFirestore(), 'users', user.uid);
+  const fallbackRole = FALLBACK_ROLES[user.email?.toLowerCase() || ''] || 'empleado';
 
-  await setDoc(userDocRef, {
-    email: user.email || 'sin-correo',
-    role: 'empleado',
-    createdAt: serverTimestamp(),
-  });
-  return 'empleado';
+  try {
+    const snapshot = await getDoc(userDocRef);
+    if (snapshot.exists()) {
+      return snapshot.data().role || fallbackRole;
+    }
+    await setDoc(
+      userDocRef,
+      {
+        email: user.email || 'sin-correo',
+        role: fallbackRole,
+        createdAt: serverTimestamp(),
+      },
+      { merge: true },
+    );
+    return fallbackRole;
+  } catch (error) {
+    console.warn('No se pudo sincronizar el rol, usando valor por defecto.', error);
+    return fallbackRole;
+  }
 }
 
 async function seedDefaultAccounts() {
-  if (!secondaryAuth || !db) return;
-
   for (const account of DEFAULT_ACCOUNTS) {
     try {
       const credential = await createUserWithEmailAndPassword(
@@ -255,21 +185,19 @@ async function seedDefaultAccounts() {
             account.email,
             account.password,
           );
-          if (existing?.user?.uid) {
-            await persistRole(existing.user.uid, account);
-          }
+          await persistRole(existing.user.uid, account);
         } catch (innerError) {
-          console.warn('No se pudo verificar la cuenta', account.email, innerError);
+          console.warn('No se pudo verificar la cuenta demo', account.email, innerError);
         }
       } else {
-        console.error('Error creando cuenta demo', account.email, error);
+        console.warn('No se pudo crear la cuenta demo', account.email, error);
       }
     } finally {
       try {
         await signOut(secondaryAuth);
       } catch (logoutError) {
         if (logoutError.code !== 'auth/no-current-user') {
-          console.warn('Logout secundario falló', logoutError);
+          console.warn('No se pudo cerrar sesión del semillado', logoutError);
         }
       }
     }
@@ -277,38 +205,20 @@ async function seedDefaultAccounts() {
 }
 
 async function persistRole(uid, account) {
-  await setDoc(
-    doc(getFirestore(), 'users', uid),
-    {
-      email: account.email,
-      role: account.role,
-      createdAt: serverTimestamp(),
-    },
-    { merge: true },
-  );
-}
-
-function renderActions(container, role) {
-  if (!container) return;
-  container.innerHTML = '';
-  actionsCatalog.forEach(action => {
-    const allowed = action.roles.includes(role);
-    const card = document.createElement('article');
-    card.className = allowed ? 'accion-card' : 'accion-card disabled';
-    const title = document.createElement('h4');
-    title.textContent = action.title;
-    const desc = document.createElement('p');
-    desc.textContent = action.description;
-    card.appendChild(title);
-    card.appendChild(desc);
-    if (!allowed) {
-      const warning = document.createElement('span');
-      warning.className = 'pill pill-admin';
-      warning.textContent = 'Solo Administrador general';
-      card.appendChild(warning);
-    }
-    container.appendChild(card);
-  });
+  try {
+    await setDoc(
+      doc(getFirestore(), 'users', uid),
+      {
+        email: account.email,
+        role: account.role,
+        nombre: account.nombre || '',
+        createdAt: serverTimestamp(),
+      },
+      { merge: true },
+    );
+  } catch (error) {
+    console.warn('No se pudo guardar el rol para', account.email, error);
+  }
 }
 
 function handleAuthError(error, callback) {
