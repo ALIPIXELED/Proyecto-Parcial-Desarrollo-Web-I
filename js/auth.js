@@ -212,6 +212,7 @@ async function persistRole(uid, account) {
         email: account.email,
         role: account.role,
         nombre: account.nombre || '',
+        estado: account.estado || 'activo',
         createdAt: serverTimestamp(),
       },
       { merge: true },

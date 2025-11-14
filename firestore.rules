@@ -12,12 +12,16 @@ service cloud.firestore {
     }
 
     match /users/{userId} {
-      allow read: if isSignedIn();
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
 
       allow create: if isSignedIn()
         && (request.auth.uid == userId || isAdmin());
 
-      allow update, delete: if isAdmin();
+      allow update: if isSignedIn()
+        && (request.auth.uid == userId || isAdmin());
+
+      allow delete: if isAdmin();
     }
 
     match /{document=**} {

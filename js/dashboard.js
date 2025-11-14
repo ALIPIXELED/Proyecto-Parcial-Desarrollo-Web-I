@@ -4,7 +4,6 @@ import {
   signOut,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
 } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js';
 import {
   getFirestore,
@@ -19,6 +18,7 @@ import {
   updateDoc,
   deleteDoc,
   serverTimestamp,
+  where,
 } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -36,6 +36,8 @@ const FALLBACK_ROLES = {
   'empleado@barca.com': 'empleado',
 };
 
+const LOCAL_EMPLOYEE_STORAGE_KEY = 'fcbarcelona_dashboard_employees';
+
 const primaryApp = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(primaryApp);
 const db = getFirestore(primaryApp);
@@ -50,6 +52,7 @@ const secondaryAuth = getAuth(secondaryApp);
 
 let currentUser = null;
 let currentRole = null;
+let editingEmployeeId = null;
 let editingPlayerId = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,12 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const employeeError = document.getElementById('employee-error');
   const employeeSuccess = document.getElementById('employee-success');
   const employeeList = document.getElementById('employee-list');
+  const employeeCancelEditBtn = document.getElementById('employee-cancel-edit');
+  const employeePasswordGroup = document.getElementById('employee-password-group');
+  const employeePasswordInput = document.getElementById('employee-password');
+  const employeeSubmitBtn = document.getElementById('employee-submit-btn');
   const gestionPlantillaSection = document.getElementById('gestion-plantilla');
   const plantillaForm = document.getElementById('plantilla-form');
   const plantillaError = document.getElementById('plantilla-error');
   const plantillaSuccess = document.getElementById('plantilla-success');
   const plantillaList = document.getElementById('plantilla-list');
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
+  const storageReady = storageAvailable();
 
   if (!auth) {
     console.warn('Dashboard no puede inicializarse: falta Firebase.');
@@ -96,6 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  employeeCancelEditBtn?.addEventListener('click', () => {
+    resetEmployeeFormState(employeeForm);
+  });
+
   logoutBtn?.addEventListener('click', async () => {
     try {
       await signOut(auth);
@@ -112,19 +124,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = event.target['employee-name'].value.trim();
     const email = event.target['employee-email'].value.trim().toLowerCase();
     const password = event.target['employee-password'].value.trim();
+    const isEditingEmployee = Boolean(editingEmployeeId);
 
-    if (!name || !email || !password) {
-      setEmployeeError('Completa nombre, correo y contraseña.', employeeError, employeeSuccess);
+    if (!name || !email) {
+      setEmployeeError('Completa nombre y correo institucional.', employeeError, employeeSuccess);
+      return;
+    }
+
+    if (!isEditingEmployee && !password) {
+      setEmployeeError('Completa la contraseña temporal para nuevos empleados.', employeeError, employeeSuccess);
+      return;
+    }
+
+    if (isEditingEmployee) {
+      const updatedEmployee = { id: editingEmployeeId, nombre: name, email, estado: 'activo' };
+      upsertStoredEmployee(updatedEmployee);
+      renderEmployeeList(employeeList, getStoredEmployees());
+      resetEmployeeFormState(employeeForm, {
+        preserveFeedback: true,
+      });
+      try {
+        await setDoc(
+          doc(db, 'users', editingEmployeeId),
+          {
+            nombre: name,
+            email,
+            estado: 'activo',
+            updatedAt: serverTimestamp(),
+            updatedBy: currentUser?.uid || 'sistema',
+          },
+          { merge: true },
+        );
+        setEmployeeSuccess('Empleado actualizado correctamente.', employeeError, employeeSuccess);
+      } catch (error) {
+        console.error('Error actualizando empleado', error);
+        setEmployeeSuccess(
+          'Empleado actualizado localmente. No se pudo sincronizar con el servidor.',
+          employeeError,
+          employeeSuccess,
+        );
+      }
+      renderEmployeeList(employeeList, getStoredEmployees());
       return;
     }
 
     try {
       const credential = await createUserWithEmailAndPassword(secondaryAuth, email, password);
-      await persistRole(credential.user.uid, { email, role: 'empleado', nombre: name });
+      await persistRole(credential.user.uid, { email, role: 'empleado', nombre: name, estado: 'activo' });
       setEmployeeSuccess('Empleado registrado correctamente.', employeeError, employeeSuccess);
-      event.target.reset();
-      appendEmployeeToList(employeeList, { nombre: name, email });
+      resetEmployeeFormState(employeeForm, {
+        preserveFeedback: true,
+      });
+      const newEmployee = { id: credential.user.uid, nombre: name, email, estado: 'activo' };
+      upsertStoredEmployee(newEmployee);
+      await loadEmployees(employeeList);
     } catch (error) {
+      if (error?.code === 'auth/email-already-in-use') {
+        const synced = await syncExistingEmployeeByEmail(email, name, employeeList, employeeError, employeeSuccess);
+        if (synced) {
+          resetEmployeeFormState(employeeForm, { preserveFeedback: true });
+          return;
+        }
+      }
       handleAuthError(error, message => setEmployeeError(message, employeeError, employeeSuccess));
     } finally {
       try {
@@ -184,6 +245,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   cancelEditBtn?.addEventListener('click', () => resetPlantillaForm(plantillaForm, cancelEditBtn, true, plantillaError, plantillaSuccess));
 
+  employeeList?.addEventListener('click', async event => {
+    const actionBtn = event.target.closest('[data-action]');
+    if (!actionBtn) return;
+    const li = actionBtn.closest('li[data-id]');
+    if (!li) return;
+    const { id } = li.dataset;
+    if (!id) return;
+
+    if (actionBtn.dataset.action === 'edit') {
+      enterEmployeeEditMode(
+        {
+          id,
+          nombre: li.dataset.nombre || '',
+          email: li.dataset.email || '',
+        },
+        employeeForm,
+        employeeCancelEditBtn,
+        employeeSubmitBtn,
+      );
+      return;
+    }
+
+    if (actionBtn.dataset.action === 'delete') {
+      if (!confirm('¿Eliminar este empleado registrado? Se revocará su acceso al panel.')) return;
+      removeStoredEmployee(id);
+      renderEmployeeList(employeeList, getStoredEmployees());
+      if (editingEmployeeId === id) {
+        resetEmployeeFormState(employeeForm, { preserveFeedback: true });
+      }
+      try {
+        await setDoc(
+          doc(db, 'users', id),
+          {
+            estado: 'eliminado',
+            role: 'revocado',
+            deletedAt: serverTimestamp(),
+            deletedBy: currentUser?.uid || 'sistema',
+          },
+          { merge: true },
+        );
+        setEmployeeSuccess(
+          'Empleado eliminado. Recuerda quitar su cuenta en Firebase Authentication si ya no debe acceder.',
+          employeeError,
+          employeeSuccess,
+        );
+      } catch (error) {
+        console.error('Error eliminando empleado', error);
+        setEmployeeSuccess(
+          'Empleado eliminado localmente. No se pudo sincronizar con el servidor.',
+          employeeError,
+          employeeSuccess,
+        );
+      }
+    }
+  });
+
   plantillaList?.addEventListener('click', async event => {
     const actionBtn = event.target.closest('[data-action]');
     if (!actionBtn) return;
@@ -229,31 +346,142 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function getStoredEmployees() {
+    if (!storageReady) return [];
+    try {
+      const raw = window.localStorage.getItem(LOCAL_EMPLOYEE_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function persistStoredEmployees(employees) {
+    if (!storageReady) return;
+    try {
+      window.localStorage.setItem(LOCAL_EMPLOYEE_STORAGE_KEY, JSON.stringify(employees));
+    } catch (error) {
+      console.warn('No se pudo guardar la lista local de empleados.', error);
+    }
+  }
+
+  function upsertStoredEmployee(employee) {
+    if (!storageReady || !employee) return;
+    const employees = getStoredEmployees();
+    const index = employees.findIndex(
+      item =>
+        (item.id && employee.id && item.id === employee.id) ||
+        (item.email && employee.email && item.email === employee.email),
+    );
+    if (index >= 0) {
+      employees[index] = { ...employees[index], ...employee };
+    } else {
+      employees.unshift(employee);
+    }
+    persistStoredEmployees(employees);
+  }
+
+  function removeStoredEmployee(employeeId) {
+    if (!storageReady || !employeeId) return;
+    const filtered = getStoredEmployees().filter(emp => emp.id !== employeeId);
+    persistStoredEmployees(filtered);
+  }
+
+  async function syncExistingEmployeeByEmail(email, providedName, listEl, errorEl, successEl) {
+    if (!email) return false;
+    try {
+      const existingSnapshot = await getDocs(query(collection(db, 'users'), where('email', '==', email)));
+      if (existingSnapshot.empty) {
+        setEmployeeError(
+          'Ese correo ya está en uso en Firebase Auth. Pide al empleado que inicie sesión una vez para sincronizarlo.',
+          errorEl,
+          successEl,
+        );
+        return false;
+      }
+      const docSnap = existingSnapshot.docs[0];
+      const currentData = docSnap.data();
+      const normalizedEmployee = {
+        id: docSnap.id,
+        nombre: providedName || currentData.nombre || '',
+        email: currentData.email || email,
+        estado: 'activo',
+      };
+      await setDoc(
+        doc(db, 'users', docSnap.id),
+        {
+          nombre: normalizedEmployee.nombre,
+          email: normalizedEmployee.email,
+          role: 'empleado',
+          estado: 'activo',
+          updatedAt: serverTimestamp(),
+          updatedBy: currentUser?.uid || 'sistema',
+        },
+        { merge: true },
+      );
+      upsertStoredEmployee(normalizedEmployee);
+      renderEmployeeList(listEl, getStoredEmployees());
+      setEmployeeSuccess('El empleado ya existía. Se reactivó y aparece en la lista.', errorEl, successEl);
+      return true;
+    } catch (syncError) {
+      console.error('No se pudo sincronizar el empleado existente', syncError);
+      setEmployeeError(
+        'Ese correo ya pertenece a otra cuenta y no se pudo sincronizar automáticamente. Revisa Firebase Auth/Firestore.',
+        errorEl,
+        successEl,
+      );
+      return false;
+    }
+  }
+
+  function renderEmployeeList(listEl, employees) {
+    if (!listEl) return;
+    const visibleEmployees = Array.isArray(employees)
+      ? employees.filter(emp => (emp.estado || 'activo') !== 'eliminado')
+      : [];
+    if (!visibleEmployees.length) {
+      listEl.innerHTML = '<li>No hay empleados registrados.</li>';
+      listEl.dataset.initialized = '';
+      return;
+    }
+    listEl.innerHTML = '';
+    listEl.dataset.initialized = 'true';
+    const sorted = [...visibleEmployees].sort((a, b) =>
+      (a.nombre || a.email || '').localeCompare(b.nombre || b.email || ''),
+    );
+    for (let i = sorted.length - 1; i >= 0; i -= 1) {
+      appendEmployeeToList(listEl, sorted[i]);
+    }
+  }
+
   async function loadEmployees(listEl) {
     if (!listEl) return;
+    const cachedEmployees = getStoredEmployees();
+    const hasCache = cachedEmployees.length > 0;
+    renderEmployeeList(listEl, cachedEmployees);
     try {
       const snapshot = await getDocs(collection(db, 'users'));
       const employees = [];
       snapshot.forEach(docSnap => {
         const data = docSnap.data();
-        if (data.role === 'empleado') {
-          employees.push({ id: docSnap.id, ...data });
+        if (data.role === 'empleado' && data.estado !== 'eliminado') {
+          employees.push({
+            id: docSnap.id,
+            nombre: data.nombre || '',
+            email: data.email || '',
+            estado: data.estado || 'activo',
+          });
         }
       });
-      employees.sort((a, b) => (a.nombre || a.email).localeCompare(b.nombre || b.email));
-      if (!employees.length) {
-        listEl.innerHTML = '<li>No hay empleados registrados.</li>';
-        listEl.dataset.initialized = '';
-        return;
-      }
-      listEl.innerHTML = '';
-      listEl.dataset.initialized = 'true';
-      employees.forEach(emp => {
-        appendEmployeeToList(listEl, emp);
-      });
+      renderEmployeeList(listEl, employees);
+      persistStoredEmployees(employees);
     } catch (error) {
-      console.error('Error cargando empleados', error);
-      listEl.innerHTML = '<li>Error al cargar empleados.</li>';
+      console.error('Error cargando empleados desde Firestore', error);
+      if (!hasCache) {
+        listEl.innerHTML = '<li>No se pudo sincronizar con el servidor. Agrega un empleado nuevo para iniciar la lista.</li>';
+        listEl.dataset.initialized = '';
+      }
     }
   }
 
@@ -264,6 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
       listEl.dataset.initialized = 'true';
     }
     const li = document.createElement('li');
+    li.dataset.id = emp.id || '';
+    li.dataset.nombre = emp.nombre || '';
+    li.dataset.email = emp.email || '';
     const info = document.createElement('div');
     info.className = 'list-info';
     const name = document.createElement('strong');
@@ -274,7 +505,62 @@ document.addEventListener('DOMContentLoaded', () => {
     info.appendChild(name);
     info.appendChild(meta);
     li.appendChild(info);
+    if (currentRole === 'admin') {
+      const actions = document.createElement('div');
+      actions.className = 'list-actions';
+      const editBtn = document.createElement('button');
+      editBtn.type = 'button';
+      editBtn.className = 'list-btn edit';
+      editBtn.dataset.action = 'edit';
+      editBtn.textContent = 'Editar';
+      const deleteBtn = document.createElement('button');
+      deleteBtn.type = 'button';
+      deleteBtn.className = 'list-btn delete';
+      deleteBtn.dataset.action = 'delete';
+      deleteBtn.textContent = 'Eliminar';
+      actions.appendChild(editBtn);
+      actions.appendChild(deleteBtn);
+      li.appendChild(actions);
+    }
     listEl.prepend(li);
+  }
+
+  function enterEmployeeEditMode(employee, form, cancelBtn, submitBtn) {
+    if (!form || !employee) return;
+    form['employee-name'].value = employee.nombre || '';
+    form['employee-email'].value = employee.email || '';
+    editingEmployeeId = employee.id || null;
+    toggleEmployeePasswordField(false);
+    if (submitBtn) submitBtn.textContent = 'Guardar cambios';
+    cancelBtn?.classList.remove('hidden');
+    setEmployeeSuccess('Editando empleado. Guarda o cancela los cambios.', employeeError, employeeSuccess);
+  }
+
+  function resetEmployeeFormState(form, options = {}) {
+    if (!form) return;
+    const { preserveFeedback = false } = options;
+    form.reset();
+    editingEmployeeId = null;
+    if (employeeSubmitBtn) employeeSubmitBtn.textContent = 'Registrar empleado';
+    employeeCancelEditBtn?.classList.add('hidden');
+    toggleEmployeePasswordField(true);
+    if (!preserveFeedback) {
+      clearEmployeeFeedback(employeeError, employeeSuccess);
+    }
+  }
+
+  function toggleEmployeePasswordField(show) {
+    if (!employeePasswordGroup || !employeePasswordInput) return;
+    if (show) {
+      employeePasswordGroup.classList.remove('hidden');
+      employeePasswordInput.disabled = false;
+      employeePasswordInput.required = true;
+    } else {
+      employeePasswordGroup.classList.add('hidden');
+      employeePasswordInput.disabled = true;
+      employeePasswordInput.required = false;
+      employeePasswordInput.value = '';
+    }
   }
 
   async function loadPlantilla(listEl) {
@@ -369,6 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return {
       admin: 'Administrador general',
       empleado: 'Empleado',
+      revocado: 'Acceso revocado',
     };
   }
 
@@ -436,6 +723,7 @@ async function persistRole(uid, account) {
         email: account.email,
         role: account.role,
         nombre: account.nombre || '',
+        estado: account.estado || 'activo',
         createdAt: serverTimestamp(),
       },
       { merge: true },
@@ -463,4 +751,16 @@ function translateAuthError(error) {
     'secondary-auth-not-ready': 'No se pudo preparar la autenticación secundaria. Refresca la página.',
   };
   return messages[code] || 'Ocurrió un error con la autenticación.';
+}
+
+function storageAvailable() {
+  if (typeof window === 'undefined' || !window.localStorage) return false;
+  try {
+    const testKey = '__dashboard_storage_test__';
+    window.localStorage.setItem(testKey, testKey);
+    window.localStorage.removeItem(testKey);
+    return true;
+  } catch {
+    return false;
+  }
 }
