@@ -56,7 +56,7 @@
 
 .dashboard-main {
   max-width: 1200px;
-  margin: 2rem auto 4rem;
+  margin: 2rem auto 2rem;
   padding: 0 1.5rem;
   display: flex;
   flex-direction: column;
